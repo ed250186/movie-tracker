@@ -10,6 +10,9 @@ const MovieContainer = () => {
   return (
     <section>
       <MovieCard/>
+      <MovieCard/>
+      <MovieCard/>
+      <MovieCard/>
     </section>
   )
 }

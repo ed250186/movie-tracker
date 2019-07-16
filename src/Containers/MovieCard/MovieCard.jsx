@@ -7,10 +7,10 @@ const MovieCard = () => {
 
 
   return (
-    <article>
+    <article className='movieCard'>
       <img src="https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg" alt="MadMax"/>
-      <p>Test</p>
-      <p>2019</p>
+      <p className='title'>Mad Max: Fury Road</p>
+      <p className='year'>2019</p>
     </article>
   )
 }
