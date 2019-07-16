@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  border: red solid 1px;
+}
+
+html,
+body,
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+.App {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  main {
+    height: 100%;
+    width: 90%;
+  }
+}
