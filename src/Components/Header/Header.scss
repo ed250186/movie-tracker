@@ -1,0 +1,18 @@
+header {
+  height: 10%;
+  width: 100%;
+  background: #17274C;
+  border-bottom: #485981 solid 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px 0 10px;
+  h1 {
+    height: 40px;
+  }
+  button {
+    height: 20px;
+    width: 10%;
+    font-size: 15px;
+  }
+}

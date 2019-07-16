@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+.App {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  main {
+    height: 100%;
+    width: 90%;
+  }
+}
+
+button {
+  color: #DCE3EF;
+  background: #485981;
+  border: none;
+  border-radius: 50px;
+}
+button:hover {
+  background: #FF1070;
+}
