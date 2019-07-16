@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "./App.scss";
-import { apiCalls } from "../../apiCalls/apiCalls.js";
 import Aside from '../Aside/Aside.jsx'
 import Header from '../Header/Header.jsx'
 import MovieContainer from '../../Containers/MovieContainer/MovieContainer.jsx'
+import { nowPlaying } from "../../apiCalls/apiCalls";
+
 
 class App extends Component {
   constructor() {
@@ -13,7 +14,7 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    apiCalls()
+    nowPlaying()
       .then(movies => this.setState({ movies: movies}))
       .catch(this.setState({ error: 'Error fetching data' }));
     console.log('did this work')

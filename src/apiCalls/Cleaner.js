@@ -1,10 +1,10 @@
 import { imageUrl } from './paths.js'
 
 export const cleanMovies = (movies) => {
-    let createMovies = [movies]
-    return createMovies.map(movie => ({
+    console.log(movies.results)
+    return movies.results.map(movie => ({
         id: movie.id,
-        originalTitle: movie.original_title,
+        title: movie.title,
         overview: movie.overview,
         popularity: movie.popularity,
         posterPath: `${imageUrl}${movie.poster_path}`,
