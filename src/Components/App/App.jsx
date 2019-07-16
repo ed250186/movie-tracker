@@ -17,7 +17,6 @@ class App extends Component {
     nowPlaying()
       .then(movies => this.setState({ movies: movies}))
       .catch(this.setState({ error: 'Error fetching data' }));
-    console.log('did this work')
   }
 
   render() {

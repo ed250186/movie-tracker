@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+# key
+/src/apiCalls/apiKey.js
+
 # production
 /build
 
