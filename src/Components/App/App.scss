@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  border: red solid 1px;
+  // border: red solid 1px;
 }
 
 html,
@@ -18,4 +18,14 @@ body,
     height: 100%;
     width: 90%;
   }
+}
+
+button {
+  color: #A9B6D1;
+  background: #485981;
+  border: none;
+  border-radius: 50px;
+}
+button:hover {
+  background: #FF1070;
 }
