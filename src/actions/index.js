@@ -1,4 +1,4 @@
-export const showMovies = (movieData) => ({
-    type: 'SHOW_MOVIES',
-    movieData
+export const setMovies = (movies) => ({
+    type: 'SET_MOVIES',
+    movies
 });
