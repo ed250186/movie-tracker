@@ -4,32 +4,40 @@ import Aside from '../Aside/Aside.jsx'
 import Header from '../Header/Header.jsx'
 import MovieContainer from '../../Containers/MovieContainer/MovieContainer.jsx'
 import { nowPlaying } from "../../apiCalls/apiCalls";
+import { setMovies } from '../../actions';
+import { connect }  from 'react-redux';
 
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      movies: []
-    };
-  }
+
   componentDidMount() {
     nowPlaying()
-      .then(movies => this.setState({ movies: movies}))
+      .then(movies => this.props.setMovies(movies))
       .catch(this.setState({ error: 'Error fetching data' }));
   }
+
 
   render() {
     return (
       <div className="App">
-        <Aside/>
+        <Aside />
         <main>
-          <Header/>
-          <MovieContainer/>
+          <Header />
+          <MovieContainer />
         </main>
       </div>
+
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  movies: state.movies
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  setMovies: (movies) => dispatch(setMovies(movies))
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
