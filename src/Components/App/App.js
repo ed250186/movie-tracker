@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { apiCalls } from "../../apiCalls/apiCalls.js";
+import { nowPlaying } from "../../apiCalls/apiCalls";
 
 class App extends Component {
   constructor() {
@@ -10,7 +10,7 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    apiCalls()
+    nowPlaying()
       .then(movies => this.setState({ movies: movies}))
       .catch(this.setState({ error: 'Error fetching data' }));
     console.log('did this work')
