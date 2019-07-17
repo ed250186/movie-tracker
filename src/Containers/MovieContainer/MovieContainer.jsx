@@ -1,18 +1,45 @@
-import React from "react";
+import React, { Component } from "react";
 import "./MovieContainer.scss";
 import MovieCard from "../MovieCard/MovieCard.jsx";
 import { setMovies } from "../../actions";
 import { connect } from "react-redux";
+import { nowPlaying } from "../../apiCalls/apiCalls";
 
-const MovieContainer = props => {
-  const displayMovies = props.movies.movies.map(movie => (
-    <MovieCard {...movie} key={movie.id} title={movie.title} />
-  ));
-  return <section>{displayMovies}</section>;
+class MovieContainer extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state ={
+      error: ''
+    }
+  }
+
+  async componentDidMount() {
+    await nowPlaying()
+      .then(movies => this.props.setMovies(movies))
+      .catch(this.setState({ error: 'Error fetching data' }));
+
+  }
+  render (){
+    const { movies } = this.props;
+    console.log(movies)
+    const displayMovies = movies.movies.map(movie => (
+      <MovieCard {...movie} key={movie.id} title={movie.title} />
+    ));
+    return (
+      <section>
+        {displayMovies}
+      </section>
+    )
+  }
 };
 
 const mapStateToProps = state => ({
   movies: setMovies(state.movies)
 });
 
-export default connect(mapStateToProps)(MovieContainer);
+const mapDispatchToProps = (dispatch) => ({
+  setMovies: (movies) => dispatch(setMovies(movies))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieContainer);
