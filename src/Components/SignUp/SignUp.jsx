@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './SignUp.scss';
+import {createUser} from '../../apiCalls/apiCalls.js'
 
 class SignUp extends Component {
   constructor() {
@@ -17,20 +18,32 @@ class SignUp extends Component {
     email: this.state.email,
     password: this.state.password
   })
+
   post = () =>  ({
     method: 'POST',
-    headers: {'Content Type': 'application/json'},
-    body: this.newUser
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(this.newUser())
   })
 
   handleChange = (e) => {
     const {name, value} = e.target;
     this.setState({[name]: value})
   }
+
+  addUser = (e) => {
+    e.preventDefault()
+    // console.log(this.url)
+    // console.log(this.post)
+    console.log(createUser(this.url(), this.post()))
+  }
+
   render() {
     return (
       <div className='sign-up'>
-        <form action="">
+        <form onSubmit={this.addUser}>
           <input 
             type="text" 
             placeholder='name' 

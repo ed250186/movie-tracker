@@ -17,7 +17,9 @@ export const userList = () => {
 }
 
 export const createUser = (url, user) => {
-  return fetch(url)
-    .then()
+  console.log(url)
+  console.log(user)
+  return fetch(url, user)
+    .then(response => response.json())
 
 }
