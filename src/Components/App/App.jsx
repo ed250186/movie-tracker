@@ -6,6 +6,7 @@ import MovieContainer from '../../Containers/MovieContainer/MovieContainer.jsx'
 import { nowPlaying } from "../../apiCalls/apiCalls";
 import { setMovies } from '../../actions';
 import { connect }  from 'react-redux';
+import SignIn from '../SignIn/SignIn.jsx'
 
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
     nowPlaying()
       .then(movies => this.props.setMovies(movies))
       .catch(this.setState({ error: 'Error fetching data' }));
+
   }
 
 
@@ -24,6 +26,7 @@ class App extends Component {
         <main>
           <Header />
           <MovieContainer />
+          <SignIn />
         </main>
       </div>
 
@@ -37,6 +40,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setMovies: (movies) => dispatch(setMovies(movies))
+
 })
 
 
