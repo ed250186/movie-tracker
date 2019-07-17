@@ -45,7 +45,8 @@ class SignUp extends Component {
 
   checkUsers = (e) => {
     e.preventDefault()
-    console.log(this.props.users)
+    const copys = this.props.users.filter(user => user.email === this.state.email)
+    copys.length === 0 ? this.addUser() : console.log('User Exsists')
   }
 
   addUser = () => {
