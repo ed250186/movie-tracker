@@ -17,6 +17,7 @@ export class MovieCard extends Component {
       <article className="movieCard">
         <img className="card-img" src={posterPath} alt={`${title} poster`} />
         <p className="title">{title}</p>
+        {console.log({title})}
         <p className="year">{releaseDate}</p>
       </article>
     );
