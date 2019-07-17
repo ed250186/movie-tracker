@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import './SignUp.scss';
 
 class SignUp extends Component {
   constructor() {
@@ -10,16 +11,25 @@ class SignUp extends Component {
     }
   }
 
-  url = 'http://localhost:3000/api/users/new'
-  // const post = 
+  url = () => 'http://localhost:3000/api/users/new'
+  newUser = () => ({
+    name: this.state.name, 
+    email: this.state.email,
+    password: this.state.password
+  })
+  post = () =>  ({
+    method: 'POST',
+    headers: {'Content Type': 'application/json'},
+    body: this.newUser
+  })
 
   handleChange = (e) => {
     const {name, value} = e.target;
     this.setState({[name]: value})
   }
-  return() {
+  render() {
     return (
-      <div>
+      <div className='sign-up'>
         <form action="">
           <input 
             type="text" 
@@ -39,7 +49,7 @@ class SignUp extends Component {
             name='password'
             onChange={this.handleChange}
           />
-          <input type="submit" name="" id=""/>
+          <input type="submit" name="submit" value='Submit'/>
         </form>
       </div>
     )

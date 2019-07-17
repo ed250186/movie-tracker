@@ -6,7 +6,7 @@ import MovieContainer from '../../Containers/MovieContainer/MovieContainer.jsx'
 import { nowPlaying, userList } from "../../apiCalls/apiCalls";
 import { setMovies } from '../../actions';
 import { connect }  from 'react-redux';
-
+import SignUp from '../SignUp/SignUp.jsx'
 
 class App extends Component {
 
@@ -30,8 +30,8 @@ class App extends Component {
           <Header />
           <MovieContainer />
         </main>
+        <SignUp/>
       </div>
-
     );
   }
 }
