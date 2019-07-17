@@ -35,9 +35,7 @@ class SignUp extends Component {
 
   addUser = (e) => {
     e.preventDefault()
-    // console.log(this.url)
-    // console.log(this.post)
-    console.log(createUser(this.url(), this.post()))
+    createUser(this.url(), this.post())
   }
 
   render() {
