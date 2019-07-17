@@ -4,7 +4,7 @@ import Aside from '../Aside/Aside.jsx'
 import Header from '../Header/Header.jsx'
 import MovieContainer from '../../Containers/MovieContainer/MovieContainer.jsx'
 // import { connect }  from 'react-redux';
-import SignIn from '../SignIn/SignIn'
+// import SignIn from '../SignIn/SignIn'
 
 
 class App extends Component {
@@ -16,7 +16,6 @@ class App extends Component {
         <main>
           <Header />
           <MovieContainer />
-          <SignIn />
         </main>
       </div>
 

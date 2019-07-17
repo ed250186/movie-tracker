@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { allUsers } from "../../apiCalls/apiCalls";
 import { grabUsers } from '../../actions';
 import { connect }  from 'react-redux';
+import "./SignIn.scss";
 
 class SignIn extends Component{
   componentDidMount() {
@@ -11,7 +12,14 @@ class SignIn extends Component{
   }
   render(){
     return (
-      <h2>hi</h2>
+      <main>
+        <form>
+          Name:<input />
+          Email: <input />
+          Password: <input />
+          <button>Sign In</button>
+        </form>
+      </main>
     )
   }
 }
