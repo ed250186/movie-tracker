@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 
 const MovieContainer = props => {
   const displayMovies = props.movies.movies.map(movie => (
-    <MovieCard {...movie} key={movie.id} title={props.title} />
+    <MovieCard {...movie} key={movie.id} title={movie.title} />
   ));
   return <section>{displayMovies}</section>;
 };
