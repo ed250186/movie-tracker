@@ -17,7 +17,11 @@ class SignUp extends Component {
 
   componentDidMount() {
     console.log(allUsers())
-    allUsers()
+    this.getAllUsers()
+  }
+
+  getAllUsers = () => {
+    return allUsers()
     .then(users => this.props.grabUsers(users))
     .catch(this.setState({ error: 'Error fetching data' }));
   }
@@ -43,8 +47,9 @@ class SignUp extends Component {
     this.setState({[name]: value})
   }
 
-  checkUsers = (e) => {
+  checkUsers = async (e) => {
     e.preventDefault()
+    await this.getAllUsers()
     const copys = this.props.users.filter(user => user.email === this.state.email)
     copys.length === 0 ? this.addUser() : console.log('User Exsists')
   }
@@ -82,7 +87,6 @@ class SignUp extends Component {
   }
 }
 
-
 const mapStateToProps = (state) => ({
   users: state.users
 })
@@ -90,7 +94,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   grabUsers: (users) => dispatch(grabUsers(users))
 })
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
 
