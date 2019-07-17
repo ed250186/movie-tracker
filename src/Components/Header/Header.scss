@@ -10,14 +10,18 @@ header {
     font-size: 42px;
     height: auto;
   }
-  .style-header-btns {
-    display: flex;
-    justify-content: flex-end;
-  }
   button {
+    padding: 20px;
     font-size: 16px;
     height: 35px;
     margin: 0 10px 10px;
-    width: 10%;
   }
+  .btn-container{
+    display: flex;
+    justify-content: flex-end;
+  }
+  // button {
+  //   height: 50px;
+  // }
 }
+

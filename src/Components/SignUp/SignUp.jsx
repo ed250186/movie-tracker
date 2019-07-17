@@ -1,15 +1,25 @@
 import React, {Component} from 'react';
 import './SignUp.scss';
-import {createUser} from '../../apiCalls/apiCalls.js'
+import {createUser, allUsers} from '../../apiCalls/apiCalls.js';
+import {connect} from 'react-redux';
+import { grabUsers } from '../../actions';
+
 
 class SignUp extends Component {
-  constructor() {
-    super() 
+  constructor(props) {
+    super(props) 
     this.state = {
       name: '',
       email: '',
       password: ''
     }
+  }
+
+  componentDidMount() {
+    console.log(allUsers())
+    allUsers()
+    .then(users => this.props.grabUsers(users))
+    .catch(this.setState({ error: 'Error fetching data' }));
   }
 
   url = () => 'http://localhost:3000/api/users/new'
@@ -33,15 +43,19 @@ class SignUp extends Component {
     this.setState({[name]: value})
   }
 
-  addUser = (e) => {
+  checkUsers = (e) => {
     e.preventDefault()
+    console.log(this.props.users)
+  }
+
+  addUser = () => {
     createUser(this.url(), this.post())
   }
 
   render() {
     return (
       <div className='sign-up'>
-        <form onSubmit={this.addUser}>
+        <form onSubmit={this.checkUsers}>
           <input 
             type="text" 
             placeholder='name' 
@@ -67,6 +81,16 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp
+
+const mapStateToProps = (state) => ({
+  users: state.users
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  grabUsers: (users) => dispatch(grabUsers(users))
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
 
 
