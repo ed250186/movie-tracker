@@ -9,3 +9,15 @@ export const nowPlaying = () => {
     .then(response => response.json())
     .then(data => cleanMovies(data));
 };
+
+export const userList = () => {
+  return fetch('http://localhost:3000/api/users')
+    .then(response => response.json())
+    .then(data => data)
+}
+
+export const createUser = (url, user) => {
+  return fetch(url)
+    .then()
+
+}
