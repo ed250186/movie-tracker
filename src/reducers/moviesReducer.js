@@ -1,7 +1,7 @@
 export const moviesReducer = (state = [], action) => {
     switch(action.type) {
-        case 'SHOW_MOVIES':
-            return action.movieData
+        case 'SET_MOVIES':
+            return action.movies
         default:
             return state;
     }
