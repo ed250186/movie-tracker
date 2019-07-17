@@ -12,9 +12,9 @@ body,
 }
 
 .App {
-  height: 100%;
-  width: 100%;
   display: flex;
+  min-height: 100%;
+  width: 100%;
   main {
     height: 100%;
     width: 90%;
@@ -22,10 +22,10 @@ body,
 }
 
 button {
-  color: #DCE3EF;
   background: #485981;
   border: none;
   border-radius: 50px;
+  color: #DCE3EF;
 }
 button:hover {
   background: #FF1070;

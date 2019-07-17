@@ -1,18 +1,23 @@
 header {
-  height: 10%;
-  width: 100%;
+  align-items: center;
   background: #17274C;
   border-bottom: #485981 solid 1px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  height: 10%;
   padding: 0 10px 0 10px;
+  width: 100%;
   h1 {
-    height: 40px;
+    color: white;
+    font-size: 42px;
+    height: auto;
+  }
+  .style-header-btns {
+    display: flex;
+    justify-content: flex-end;
   }
   button {
-    height: 20px;
+    font-size: 16px;
+    height: 35px;
+    margin: 0 10px 10px;
     width: 10%;
-    font-size: 15px;
   }
 }

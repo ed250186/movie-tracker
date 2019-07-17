@@ -1,18 +1,26 @@
-import React from "react";
+import React, { Component } from "react";
 import "./MovieCard.scss";
 
-const MovieCard = () => {
-    
-  return (
-    <article className="movieCard">
-      <img
-        src="https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg"
-        alt="MadMax"
-      />
-      <p className="title">Mad Max: Fury Road</p>
-      <p className="year">2019</p>
-    </article>
-  );
-};
+export class MovieCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      favorites: null,
+      isFav: false,
+      error: ""
+    };
+  }
+
+  render() {
+    const { title, posterPath, releaseDate } = this.props;
+    return (
+      <article className="movieCard">
+        <img className="card-img" src={posterPath} alt={`${title} poster`} />
+        <p className="title">{title}</p>
+        <p className="year">{releaseDate}</p>
+      </article>
+    );
+  }
+}
 
 export default MovieCard;

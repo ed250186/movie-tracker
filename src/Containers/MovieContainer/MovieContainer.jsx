@@ -1,29 +1,18 @@
-import React from 'react';
-import './MovieContainer.scss';
-import MovieCard from '../MovieCard/MovieCard.jsx'
-import { setMovies } from '../../actions';
-import { connect }  from 'react-redux';
+import React from "react";
+import "./MovieContainer.scss";
+import MovieCard from "../MovieCard/MovieCard.jsx";
+import { setMovies } from "../../actions";
+import { connect } from "react-redux";
 
+const MovieContainer = props => {
+  const displayMovies = props.movies.movies.map(movie => (
+    <MovieCard {...movie} key={movie.id} title={props.title} />
+  ));
+  return <section>{displayMovies}</section>;
+};
 
-const MovieContainer = () => {
-    // const displayMovies = showMovies.movieData.map(movie => {
-    //     return (<MovieCard movie={movie} />)
-    // })
-  return (
-    <section>
-      {/* { displayMovies } */}
-    </section>
-  )
-}
+const mapStateToProps = state => ({
+  movies: setMovies(state.movies)
+});
 
-// const mapStateToProps = state => ({
-//     movies: showMovies(state.movies)
-// });
-
-// const mapDispatchToProps = dispatch => ({
-
-// })
-
-
-
-export default MovieContainer;
+export default connect(mapStateToProps)(MovieContainer);
