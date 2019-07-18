@@ -22,7 +22,6 @@ const Header = () => {
             <button>SignUp</button>
           </NavLink>
         </div>
-        <Route exact path="/" component={MovieContainer} />
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/signup" component={SignUp} />
       </Router>
