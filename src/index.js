@@ -6,6 +6,7 @@ import Root from './Root.js';
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers';
+import {BrowserRouter as Router} from 'react-router-dom'
 
 
 const store = createStore(rootReducer, composeWithDevTools());
