@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './SignUp.scss';
 import {createUser, allUsers} from '../../apiCalls/apiCalls.js';
 import {connect} from 'react-redux';
-import { grabUsers } from '../../actions';
+import { grabUsers } from '../../actions/userActions';
 
 class SignUp extends Component {
   constructor(props) {
@@ -15,7 +15,6 @@ class SignUp extends Component {
   }
 
   componentDidMount() {
-    console.log(allUsers())
     this.getAllUsers()
   }
 
@@ -25,7 +24,7 @@ class SignUp extends Component {
     .catch(this.setState({ error: 'Error fetching data' }));
   }
 
-  url = () => 'http://localhost:3000/api/users/new'
+  url = () => 'http://localhost:3000/api/users/new';
   newUser = () => ({
     name: this.state.name, 
     email: this.state.email,

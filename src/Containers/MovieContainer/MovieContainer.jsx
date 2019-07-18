@@ -21,7 +21,6 @@ export class MovieContainer extends Component {
   }
   render() {
     const { movies } = this.props;
-    console.log(movies)
     const displayMovies = movies.movies.map(movie => (
       <MovieCard {...movie} key={movie.id} title={movie.title} />
     ));

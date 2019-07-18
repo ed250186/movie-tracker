@@ -3,7 +3,3 @@ export const setMovies = (movies) => ({
     movies
 });
 
-export const grabUsers = (users) => ({
-    type: 'GRAB_USERS',
-    users
-});

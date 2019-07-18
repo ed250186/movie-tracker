@@ -1,7 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Route, NavLink, Link } from "react-router-dom";
 import "./Header.scss";
-import MovieContainer from "../../Containers/MovieContainer/MovieContainer.jsx";
 import SignIn from "../SignIn/SignIn.jsx";
 import SignUp from "../SignUp/SignUp.jsx";
 
@@ -9,9 +8,9 @@ const Header = () => {
   return (
     <header>
       <Router>
-        <NavLink to="/">
+        <Link to="/">
           <h1>Movie Tracker</h1>
-        </NavLink>
+        </Link>
       </Router>
       <Router>
         <div className="btn-container">
