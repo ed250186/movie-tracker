@@ -7,7 +7,8 @@ export const nowPlaying = () => {
     `${ baseUrl }movie/now_playing?api_key=${ key }&language=en-US&page=1`
   )
     .then(response => response.json())
-    .then(data => cleanMovies(data));
+    .then(data => cleanMovies(data))
+    .catch(error => Error('Error fetching movies'))
 };
 
 export const allUsers = () => {
