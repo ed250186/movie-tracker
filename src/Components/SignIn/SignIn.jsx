@@ -1,46 +1,39 @@
 import React, {Component} from 'react';
-import { grabUsers } from '../../actions';
+// import { grabUsers } from '../../actions';
 import { connect }  from 'react-redux';
 import "../SignUp/SignUp.scss";
+// import React, { Component } from "react";
+import { signInUser } from "../../actions/userActions";
+import { fetchUserSignIn } from "../../apiCalls/apiCalls.js";
+// import { connect } from "react-redux";
 
-class SignIn extends Component{
+class SignIn extends Component {
   constructor() {
     super();
     this.state = {
-      loggedInUser: null,
-      email: '',
-      password: '',
-    }
-  }
-  
-  handleLogin = (event) => {
-    event.preventDefault();
-    console.log(this.state)
-      const url = 'http://localhost:3000/api/users';
-      const user = {email: this.state.email, password: this.state.password};
-
-    fetch(url, {
-      method: 'POST',
-      body: JSON.stringify(user),
-      headers:{
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res => res.json())
-    .then(response => console.log('Success:', JSON.stringify(response)))
-    .catch(error => console.error('Error:', error));
+      email: "",
+      password: ""
+    };
   }
 
-  handleChange = (event) => {
+  handleLogin = async event => {
     event.preventDefault();
-    this.setState({ [event.target.name] : event.target.value })
-  }
+    const { email, password } = this.state;
+    let signInUser = await fetchUserSignIn(email, password);
+    this.props.signInUser(signInUser.data);
+    this.resetInputs();
+  };
+
+  handleChange = event => {
+    event.preventDefault();
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
   resetInputs = () => {
-    this.setState({ email: '', password: ''})
-  }
+    this.setState({ email: "", password: "" });
+  };
 
-  render(){
+  render() {
     return (
       <div className='sign-in'>
         <form onSubmit={this.handleLogin}>
@@ -51,6 +44,7 @@ class SignIn extends Component{
             onChange={event => this.handleChange(event)}
           />
           <input 
+            type='password'
             name='password'
             value={this.state.password}
             placeholder='Password'
@@ -68,12 +62,15 @@ class SignIn extends Component{
   }
 }
 
-const mapStateToProps = (state) => ({
-  users: state.users
-})
+const mapStateToProps = state => ({
+  signInUser: state.signInUser
+});
 
-const mapDispatchToProps = (dispatch) => ({
-  grabUsers: (users) => dispatch(grabUsers(users))
-})
+const mapDispatchToProps = dispatch => ({
+  signInUser: user => dispatch(signInUser(user))
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignIn);
