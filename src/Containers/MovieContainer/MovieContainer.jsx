@@ -22,7 +22,7 @@ class MovieContainer extends Component {
   }
   render (){
     const { movies } = this.props;
-    const displayMovies = movies.movies && movies.movies.map(movie => (
+    const displayMovies = movies.movies.map(movie => (
       <MovieCard {...movie} key={movie.id} title={movie.title} />
     ));
     return (
@@ -34,7 +34,7 @@ class MovieContainer extends Component {
 };
 
 const mapStateToProps = state => ({
-  movies: state.movies
+  movies: setMovies(state.movies)
 });
 
 const mapDispatchToProps = (dispatch) => ({
