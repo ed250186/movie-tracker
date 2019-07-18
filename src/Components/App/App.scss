@@ -17,16 +17,17 @@ body,
   width: 100%;
   main {
     height: 100%;
-    width: 90%;
   }
 }
 
-button {
+button,
+.button {
   background: #485981;
   border: none;
   border-radius: 50px;
   color: #DCE3EF;
 }
-button:hover {
+button:hover,
+.button:hover {
   background: #FF1070;
 }

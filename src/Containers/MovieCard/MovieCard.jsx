@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./MovieCard.scss";
+import PropTypes from 'prop-types';
+
 
 export class MovieCard extends Component {
   constructor(props) {
@@ -17,11 +19,16 @@ export class MovieCard extends Component {
       <article className="movieCard">
         <img className="card-img" src={posterPath} alt={`${title} poster`} />
         <p className="title">{title}</p>
-        {console.log({title})}
         <p className="year">{releaseDate}</p>
       </article>
     );
   }
+}
+
+MovieCard.propTypes = {
+  posterPath: PropTypes.string,
+  title: PropTypes.string,
+  releaseDate: PropTypes.string
 }
 
 export default MovieCard;

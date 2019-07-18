@@ -1,18 +1,47 @@
-import React from "react";
+import React, { Component } from "react";
 import "./MovieContainer.scss";
 import MovieCard from "../MovieCard/MovieCard.jsx";
 import { setMovies } from "../../actions";
 import { connect } from "react-redux";
+import { nowPlaying } from "../../apiCalls/apiCalls";
+import PropTypes from "prop-types";
 
-const MovieContainer = props => {
-  const displayMovies = props.movies.movies.map(movie => (
-    <MovieCard {...movie} key={movie.id} title={movie.title} />
-  ));
-  return <section>{displayMovies}</section>;
-};
+export class MovieContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: ""
+    };
+  }
 
-const mapStateToProps = state => ({
+  async componentDidMount() {
+    await nowPlaying()
+      .then(movies => this.props.setMovies(movies))
+      .catch(this.setState({ error: "Error fetching data" }));
+  }
+  render() {
+    const { movies } = this.props;
+    console.log(movies)
+    const displayMovies = movies.movies.map(movie => (
+      <MovieCard {...movie} key={movie.id} title={movie.title} />
+    ));
+    return <section>{displayMovies}</section>;
+  }
+}
+
+export const mapStateToProps = state => ({
   movies: setMovies(state.movies)
 });
 
-export default connect(mapStateToProps)(MovieContainer);
+export const mapDispatchToProps = dispatch => ({
+  setMovies: movies => dispatch(setMovies(movies))
+});
+
+MovieContainer.propTypes = {
+  movies: PropTypes.object
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MovieContainer);
