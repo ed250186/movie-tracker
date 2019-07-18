@@ -43,8 +43,7 @@ class SignIn extends Component{
   render(){
     return (
       <div className='sign-in'>
-        <form>
-          {/* Name:<input /> */}
+        <form onSubmit={this.handleLogin}>
           <input 
             name='email'
             value={this.state.email}
@@ -57,7 +56,11 @@ class SignIn extends Component{
             placeholder='Password'
             onChange={event => this.handleChange(event)}
           />
-          <button onClick={event => this.handleLogin(event)}>Sign In</button>
+          <input 
+            type="submit" 
+            value='Sign In' 
+            className='button'
+          />
           <h2>{this.state.loginMessage}</h2>
         </form>
       </div>
