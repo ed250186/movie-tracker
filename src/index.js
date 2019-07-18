@@ -6,7 +6,6 @@ import Root from './Root.js';
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers';
-import {BrowserRouter as Router} from 'react-router-dom'
 
 
 const store = createStore(rootReducer, composeWithDevTools());
@@ -14,7 +13,4 @@ const store = createStore(rootReducer, composeWithDevTools());
 
 ReactDOM.render(<Root store={store} />, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();

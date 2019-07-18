@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import { allUsers } from "../../apiCalls/apiCalls";
 import { grabUsers } from '../../actions';
 import { connect }  from 'react-redux';
-import "./SignIn.scss";
+import "../SignUp/SignUp.scss";
 
 class SignIn extends Component{
   constructor() {
@@ -37,44 +36,31 @@ class SignIn extends Component{
     this.setState({ [event.target.name] : event.target.value })
   }
 
-  // checkAllUsers = (event) => {
-  //   event.preventDefault();
-  //   this.props.users.find(user => {
-  //     console.log(user.id)
-  //     if (user.email !== this.state.email){
-  //       this.setState({loginMessage: 'Email not in system. Please add new account'})
-  //     } else if (user.email === this.state.email && user.password !== this.state.password) {
-  //       this.setState({loginMessage:'Password is incorrect, please try again'}) 
-  //     } else if (user.email === this.state.email && user.password === this.state.password) {
-  //       this.setState({ loggedInUser: user.id, loginMessage: 'This actually works'})
-  //     }
-  //     return this.state;
-  //   })
-  //   console.log(this.state)
-  //   this.resetInputs()
-  // }
-
   resetInputs = () => {
     this.setState({ email: '', password: ''})
   }
 
   render(){
     return (
-      <main>
+      <div className='sign-in'>
         <form>
           {/* Name:<input /> */}
-          Email: <input 
+          <input 
             name='email'
             value={this.state.email}
-            onChange={event => this.handleChange(event)}/>
-          Password: <input 
+            placeholder='Name'
+            onChange={event => this.handleChange(event)}
+          />
+          <input 
             name='password'
             value={this.state.password}
-            onChange={event => this.handleChange(event)}/>
+            placeholder='Password'
+            onChange={event => this.handleChange(event)}
+          />
           <button onClick={event => this.handleLogin(event)}>Sign In</button>
           <h2>{this.state.loginMessage}</h2>
         </form>
-      </main>
+      </div>
     )
   }
 }
