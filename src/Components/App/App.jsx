@@ -19,7 +19,7 @@ class App extends Component {
           <MovieContainer />
           <SignIn />
         </main>
-        <SignUp/>
+        {/* <SignUp/> */}
       </div>
     );
   }
