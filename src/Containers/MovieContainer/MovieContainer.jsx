@@ -5,7 +5,7 @@ import { setMovies } from "../../actions";
 import { connect } from "react-redux";
 import { nowPlaying } from "../../apiCalls/apiCalls";
 
-class MovieContainer extends Component {
+export class MovieContainer extends Component {
 
   constructor(props) {
     super(props);
@@ -33,11 +33,11 @@ class MovieContainer extends Component {
   }
 };
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   movies: setMovies(state.movies)
 });
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   setMovies: (movies) => dispatch(setMovies(movies))
 });
 
