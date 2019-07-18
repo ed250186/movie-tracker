@@ -17,7 +17,6 @@ class App extends Component {
         <main>
           <Header />
           <MovieContainer />
-          <SignIn />
         </main>
         {/* <SignUp/> */}
       </div>

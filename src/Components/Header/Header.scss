@@ -11,17 +11,15 @@ header {
     height: auto;
   }
   button {
-    padding: 20px;
+    padding: 10px;
     font-size: 16px;
-    height: 35px;
+    width: 100px;
+    height: auto;
     margin: 0 10px 10px;
   }
   .btn-container{
     display: flex;
     justify-content: flex-end;
   }
-  // button {
-  //   height: 50px;
-  // }
 }
 
