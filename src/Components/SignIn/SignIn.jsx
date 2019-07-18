@@ -1,8 +1,11 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
+// import { grabUsers } from '../../actions';
+import { connect }  from 'react-redux';
+import "../SignUp/SignUp.scss";
+// import React, { Component } from "react";
 import { signInUser } from "../../actions/userActions";
 import { fetchUserSignIn } from "../../apiCalls/apiCalls.js";
-import { connect } from "react-redux";
-import "./SignIn.scss";
+// import { connect } from "react-redux";
 
 class SignIn extends Component {
   constructor() {
@@ -32,25 +35,30 @@ class SignIn extends Component {
 
   render() {
     return (
-      <main>
-        <form>
-          Email:{" "}
-          <input
-            name="email"
+      <div className='sign-in'>
+        <form onSubmit={this.handleLogin}>
+          <input 
+            name='email'
             value={this.state.email}
+            placeholder='Name'
             onChange={event => this.handleChange(event)}
           />
-          Password:{" "}
-          <input
-            name="password"
+          <input 
+            type='password'
+            name='password'
             value={this.state.password}
+            placeholder='Password'
             onChange={event => this.handleChange(event)}
           />
-          <button onClick={event => this.handleLogin(event)}>Sign In</button>
+          <input 
+            type="submit" 
+            value='Sign In' 
+            className='button'
+          />
           <h2>{this.state.loginMessage}</h2>
         </form>
-      </main>
-    );
+      </div>
+    )
   }
 }
 
