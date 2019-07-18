@@ -21,12 +21,14 @@ body,
   }
 }
 
-button {
+button,
+.button {
   background: #485981;
   border: none;
   border-radius: 50px;
   color: #DCE3EF;
 }
-button:hover {
+button:hover,
+.button:hover {
   background: #FF1070;
 }

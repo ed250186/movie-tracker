@@ -4,7 +4,6 @@ import {createUser, allUsers} from '../../apiCalls/apiCalls.js';
 import {connect} from 'react-redux';
 import { grabUsers } from '../../actions';
 
-
 class SignUp extends Component {
   constructor(props) {
     super(props) 
@@ -80,7 +79,12 @@ class SignUp extends Component {
             name='password'
             onChange={this.handleChange}
           />
-          <input type="submit" name="submit" value='Submit'/>
+          <input 
+            type="submit" 
+            name="submit" 
+            value='Submit'
+            className='button'
+            />
         </form>
       </div>
     )

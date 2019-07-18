@@ -3,8 +3,25 @@
   width: 100%;
   position: absolute;
   z-index: 1;
-  background: black;
+  background: rgba(0, 0, 0, .7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   form{
-    background: green;
+    background: #0F1C40;
+    height: 50%;
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    input {
+      height: 30px;
+      width: 60%;
+      border: none;
+      border-radius: 50px;
+    }
+    ::-webkit-input-placeholder {
+      padding-left: 10px;
+    }
   }
 }
