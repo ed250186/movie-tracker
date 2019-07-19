@@ -48,6 +48,7 @@ class SignUp extends Component {
   checkUsers = async (e) => {
     e.preventDefault()
     await this.getAllUsers()
+    console.log(this.props)
     const copys = this.props.users.filter(user => user.email === this.state.email)
     copys.length === 0 ? this.addUser() : console.log('User Exsists')
   }
@@ -91,7 +92,7 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  users: state.users
+  users: console.log(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({

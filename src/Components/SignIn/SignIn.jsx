@@ -3,6 +3,7 @@ import { signInUser } from "../../actions/userActions";
 import { fetchUserSignIn } from "../../apiCalls/apiCalls.js";
 import { connect } from "react-redux";
 import "./SignIn.scss";
+import { moviesReducer } from '../../reducers/moviesReducer'
 
 class SignIn extends Component {
   constructor() {
@@ -18,6 +19,7 @@ class SignIn extends Component {
     const { email, password } = this.state;
     let signInUser = await fetchUserSignIn(email, password);
     this.props.signInUser(signInUser.data);
+    console.log('test', moviesReducer)
     this.resetInputs();
   };
 
