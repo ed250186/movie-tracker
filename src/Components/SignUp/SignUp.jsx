@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './SignUp.scss';
 import {createUser, allUsers} from '../../apiCalls/apiCalls.js';
 import {connect} from 'react-redux';
-import { grabUsers } from '../../actions/userActions';
+import { grabUsers, addUsers } from '../../actions/userActions';
 
 class SignUp extends Component {
   constructor(props) {
@@ -20,11 +20,11 @@ class SignUp extends Component {
 
   getAllUsers = () => {
     return allUsers()
-    .then(users => this.props.grabUsers(users))
+    .then(users => this.props.addUsers(users))
     .catch(this.setState({ error: 'Error fetching data' }));
   }
 
-  url = () => 'http://localhost:3000/api/users/new';
+  url = () => ('http://localhost:3000/api/users/new');
   newUser = () => ({
     name: this.state.name, 
     email: this.state.email,
@@ -92,11 +92,11 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  users: console.log(state)
+  users: state.grabUsers
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  grabUsers: (users) => dispatch(grabUsers(users))
+  addUsers: (users) => dispatch(addUsers(users))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

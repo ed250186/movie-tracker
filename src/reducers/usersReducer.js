@@ -16,22 +16,24 @@ export const addUsersReducer = (state = [], action) => {
   }
 };
 
-export const signInUserReducer = (state = {}, action) => {
+export const loginReducer = (state = {}, action) => {
   switch (action.type) {
     case "SIGNIN_USER":
       return {...action.signInUser, loggedIn: true} ;
+    case "SIGNOUT_USER":
+      return state = {};  
     default:
       return state;
   }
 };
 
-export const signOutUserReducer = (state = {}, action) => {
-  switch (action.type) {
-    case "SIGNOUT_USER":
-      return state;
-    default:
-      return state;
-  }
-};
+// export const signOutUserReducer = (state = {}, action) => {
+//   switch (action.type) {
+//     case "SIGNOUT_USER":
+//       return state;
+//     default:
+//       return state;
+//   }
+// };
 
 

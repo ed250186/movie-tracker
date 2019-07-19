@@ -1,8 +1,11 @@
-import React, { Component } from "react";
-import { signInUser } from "../../actions/userActions";
+import React, {Component} from 'react';
+// import { grabUsers } from '../../actions';
+import { connect }  from 'react-redux';
+import "../SignUp/SignUp.scss";
+// import React, { Component } from "react";
+import { signInUser, signOutUser } from "../../actions/userActions";
 import { fetchUserSignIn } from "../../apiCalls/apiCalls.js";
-import { connect } from "react-redux";
-import "./SignIn.scss";
+import "../SignUp/SignUp.scss";
 import { moviesReducer } from '../../reducers/moviesReducer'
 
 class SignIn extends Component {
@@ -32,36 +35,51 @@ class SignIn extends Component {
     this.setState({ email: "", password: "" });
   };
 
+  signOut = (event) => {
+    event.preventDefault();
+    this.props.signOutUser(signOutUser)
+  }
+
   render() {
     return (
-      <main>
-        <form>
-          Email:{" "}
-          <input
-            name="email"
+      <div className='sign-in'>
+        <form onSubmit={this.handleLogin}>
+          <input 
+            name='email'
             value={this.state.email}
+            placeholder='Name'
             onChange={event => this.handleChange(event)}
           />
-          Password:{" "}
-          <input
-            name="password"
+          <input 
+            type='password'
+            name='password'
             value={this.state.password}
+            placeholder='Password'
             onChange={event => this.handleChange(event)}
           />
-          <button onClick={event => this.handleLogin(event)}>Sign In</button>
+          <input 
+            type="submit" 
+            value='Sign In' 
+            className='button'
+          />
           <h2>{this.state.loginMessage}</h2>
         </form>
-      </main>
-    );
+        <form>
+          <button onClick={event => this.signOut(event)}>SignOut</button>
+        </form>
+      </div>
+    )
   }
 }
 
 const mapStateToProps = state => ({
-  signInUser: state.signInUser
+  signInUser: state.signInUser,
+  signOutUser: state.signOutUser
 });
 
 const mapDispatchToProps = dispatch => ({
-  signInUser: user => dispatch(signInUser(user))
+  signInUser: user => dispatch(signInUser(user.data)),
+  signOutUser: user => dispatch(signOutUser(user.data))
 });
 
 export default connect(
