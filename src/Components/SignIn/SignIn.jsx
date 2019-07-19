@@ -4,7 +4,7 @@ import "../SignUp/SignUp.scss";
 import { signInUser } from "../../actions/userActions";
 import { fetchUserSignIn } from "../../apiCalls/apiCalls.js";
 import { NavLink } from "react-router-dom";
-import cancel from '../../images/cancel.png'
+import exit from '../../images/cancel.png'
 
 
 class SignIn extends Component {
@@ -40,7 +40,7 @@ class SignIn extends Component {
         </NavLink>
         <form onSubmit={this.handleLogin}>
           <NavLink to='/'>
-            <img src={cancel} alt="exit sign-in button" className='exit-button'/>
+            <img src={exit} alt="exit sign-in button" className='exit-button'/>
           </NavLink>
           <div>
           <input 
