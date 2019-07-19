@@ -55,6 +55,7 @@ class SignUp extends Component {
 
   addUser = () => {
     createUser(this.url(), this.post())
+    this.props.history.push("/")
   }
 
   render() {

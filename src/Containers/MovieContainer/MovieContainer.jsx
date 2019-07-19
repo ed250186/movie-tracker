@@ -33,7 +33,7 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch => ({
-  movies: movies => dispatch(setMovies(movies))
+  setMovies: movies => dispatch(setMovies(movies))
 });
 
 MovieContainer.propTypes = {
