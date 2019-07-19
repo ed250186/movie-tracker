@@ -1,9 +1,10 @@
-import React, {Component} from 'react';
-import './SignUp.scss';
-import {createUser, allUsers} from '../../apiCalls/apiCalls.js';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { grabUsers } from '../../actions/userActions';
-import {NavLink} from 'react-router-dom'
+import { allUsers, createUser } from '../../apiCalls/apiCalls.js';
+import './SignUp.scss';
+import cancel from '../../images/cancel.png'
 
 class SignUp extends Component {
   constructor(props) {
@@ -60,9 +61,11 @@ class SignUp extends Component {
   render() {
     return (
       <div className='sign-up'>
+        <NavLink to='/' className='exit'>
+        </NavLink>
         <form onSubmit={this.checkUsers}>
         <NavLink to='/'>
-            <img src="" alt="exit sign-in button"/>
+            <img src={cancel} alt="exit sign-in button" className='exit-button'/>
           </NavLink>
           <div>
           <input 

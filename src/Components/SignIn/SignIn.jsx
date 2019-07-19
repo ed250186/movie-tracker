@@ -4,6 +4,7 @@ import "../SignUp/SignUp.scss";
 import { signInUser } from "../../actions/userActions";
 import { fetchUserSignIn } from "../../apiCalls/apiCalls.js";
 import { NavLink } from "react-router-dom";
+import cancel from '../../images/cancel.png'
 
 
 class SignIn extends Component {
@@ -35,9 +36,11 @@ class SignIn extends Component {
   render() {
     return (
       <div className='sign-in'>
+        <NavLink to='/' className='exit'>
+        </NavLink>
         <form onSubmit={this.handleLogin}>
           <NavLink to='/'>
-            <img src="" alt="exit sign-in button"/>
+            <img src={cancel} alt="exit sign-in button" className='exit-button'/>
           </NavLink>
           <div>
           <input 
