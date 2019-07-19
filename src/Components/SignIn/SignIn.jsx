@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-// import { grabUsers } from '../../actions';
 import { connect }  from 'react-redux';
 import "../SignUp/SignUp.scss";
-// import React, { Component } from "react";
 import { signInUser } from "../../actions/userActions";
 import { fetchUserSignIn } from "../../apiCalls/apiCalls.js";
-// import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
+
 
 class SignIn extends Component {
   constructor() {
@@ -37,6 +36,10 @@ class SignIn extends Component {
     return (
       <div className='sign-in'>
         <form onSubmit={this.handleLogin}>
+          <NavLink to='/'>
+            <img src="" alt="exit sign-in button"/>
+          </NavLink>
+          <div>
           <input 
             name='email'
             value={this.state.email}
@@ -56,6 +59,7 @@ class SignIn extends Component {
             className='button'
           />
           <h2>{this.state.loginMessage}</h2>
+          </div>
         </form>
       </div>
     )

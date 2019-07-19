@@ -3,6 +3,7 @@ import './SignUp.scss';
 import {createUser, allUsers} from '../../apiCalls/apiCalls.js';
 import {connect} from 'react-redux';
 import { grabUsers } from '../../actions/userActions';
+import {NavLink} from 'react-router-dom'
 
 class SignUp extends Component {
   constructor(props) {
@@ -60,6 +61,10 @@ class SignUp extends Component {
     return (
       <div className='sign-up'>
         <form onSubmit={this.checkUsers}>
+        <NavLink to='/'>
+            <img src="" alt="exit sign-in button"/>
+          </NavLink>
+          <div>
           <input 
             type="text" 
             placeholder='name' 
@@ -84,6 +89,7 @@ class SignUp extends Component {
             value='Submit'
             className='button'
             />
+            </div>
         </form>
       </div>
     )
