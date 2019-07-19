@@ -3,7 +3,7 @@ import "./App.scss";
 import Aside from '../Aside/Aside.jsx'
 import Header from '../Header/Header.jsx'
 import MovieContainer from '../../Containers/MovieContainer/MovieContainer.jsx'
-// import { connect }  from 'react-redux';
+import { connect }  from 'react-redux';
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp'
 import { Route } from "react-router-dom";
@@ -31,6 +31,5 @@ class App extends Component {
     );
   }
 }
-
 
 export default App;

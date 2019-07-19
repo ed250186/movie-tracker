@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import { connect }  from 'react-redux';
 import "../SignUp/SignUp.scss";
 // import React, { Component } from "react";
-import { signInUser } from "../../actions/userActions";
+import { signInUser, signOutUser } from "../../actions/userActions";
 import { fetchUserSignIn } from "../../apiCalls/apiCalls.js";
 // import { connect } from "react-redux";
 
@@ -20,7 +20,7 @@ class SignIn extends Component {
     event.preventDefault();
     const { email, password } = this.state;
     let signInUser = await fetchUserSignIn(email, password);
-    this.props.signInUser(signInUser.data);
+    this.props.signInUser(signInUser);
     this.resetInputs();
   };
 
@@ -32,6 +32,11 @@ class SignIn extends Component {
   resetInputs = () => {
     this.setState({ email: "", password: "" });
   };
+
+  signOut = (event) => {
+    event.preventDefault();
+    this.props.signOutUser(signOutUser)
+  }
 
   render() {
     return (
@@ -57,17 +62,22 @@ class SignIn extends Component {
           />
           <h2>{this.state.loginMessage}</h2>
         </form>
+        <form>
+          <button onClick={event => this.signOut(event)}>SignOut</button>
+        </form>
       </div>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  signInUser: state.signInUser
+  signInUser: state.signInUser,
+  signOutUser: state.signOutUser
 });
 
 const mapDispatchToProps = dispatch => ({
-  signInUser: user => dispatch(signInUser(user))
+  signInUser: user => dispatch(signInUser(user.data)),
+  signOutUser: user => dispatch(signOutUser(user.data))
 });
 
 export default connect(
