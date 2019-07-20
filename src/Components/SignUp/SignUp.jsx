@@ -1,10 +1,15 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { grabUsers } from '../../actions/userActions';
-import { allUsers, createUser } from '../../apiCalls/apiCalls.js';
+// import { grabUsers } from '../../actions/userActions';
+// import { allUsers, createUser } from '../../apiCalls/apiCalls.js';
 import './SignUp.scss';
 import exit from '../../images/cancel.png'
+import React, {Component} from 'react';
+import './SignUp.scss';
+import {createUser, allUsers} from '../../apiCalls/apiCalls.js';
+// import {connect} from 'react-redux';
+import { grabUsers, addUsers } from '../../actions/userActions';
 
 class SignUp extends Component {
   constructor(props) {
@@ -26,7 +31,7 @@ class SignUp extends Component {
     .catch(this.setState({ error: 'Error fetching data' }));
   }
 
-  url = () => 'http://localhost:3000/api/users/new';
+  url = () => ('http://localhost:3000/api/users/new');
   newUser = () => ({
     name: this.state.name, 
     email: this.state.email,
@@ -45,17 +50,20 @@ class SignUp extends Component {
   handleChange = (e) => {
     const {name, value} = e.target;
     this.setState({[name]: value})
+    console.log(this.props.users)
   }
 
   checkUsers = async (e) => {
     e.preventDefault()
     await this.getAllUsers()
+    console.log(this.props)
     const copys = this.props.users.filter(user => user.email === this.state.email)
     copys.length === 0 ? this.addUser() : console.log('User Exsists')
   }
 
   addUser = () => {
     createUser(this.url(), this.post())
+    this.props.history.push("/")
   }
 
   render() {
@@ -100,10 +108,11 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  users: state.users
+  users: state.grabUsers
 })
 
 const mapDispatchToProps = (dispatch) => ({
+  addUsers: (users) => dispatch(addUsers(users)),
   grabUsers: (users) => dispatch(grabUsers(users))
 })
 

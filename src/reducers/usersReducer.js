@@ -16,10 +16,12 @@ export const addUsersReducer = (state = [], action) => {
   }
 };
 
-export const signInUserReducer = (state = {}, action) => {
+export const loginReducer = (state = { loggedIn: false }, action) => {
   switch (action.type) {
     case "SIGNIN_USER":
-      return {...action.signInUser, loggedIn: true} ;
+      return { loggedIn: true, user: action.signInUser };
+    case "SIGNOUT_USER":
+      return (state = {});
     default:
       return state;
   }
@@ -33,5 +35,3 @@ export const signOutUserReducer = (state = {}, action) => {
       return state;
   }
 };
-
-
