@@ -69,11 +69,11 @@ class SignIn extends Component {
             className='button'
           />
           {/* <h2>{this.state.loginMessage}</h2> */}
-          {/* <p>Create new account here</p> */}
+          <p>Create new account here</p>
         {/* </form> */}
         {/* <form> */}
         </div>
-          <button onClick={event => this.signOut(event)}>SignOut</button>
+          {/* <button onClick={event => this.signOut(event)}>SignOut</button> */}
         </form>
       </div>
     )

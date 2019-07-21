@@ -21,8 +21,6 @@ class Aside extends Component {
     return(
       <aside>
         <button>Favorites</button>
-        <img style={this.image} src={active} alt=""/>
-        <img style={this.image} src={inactive} alt=""/>
       </aside>
     )
   }

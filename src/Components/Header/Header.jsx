@@ -5,14 +5,13 @@ import { signOutUser, signInUser } from "../../actions/userActions";
 import "./Header.scss";
 
 const Header = props => {
-  // const compareLoginOrLogout = props.signInUser.loggedIn
-  //   ? "Sign Out"
-  //   : "Sign In";
+  const compareLoginOrLogout = props.signInUser.loggedIn
+    ? "Sign Out"
+    : "Sign In";
   const welcomeBanner = props.signInUser.loggedIn
     ? 'Welcome Back!'
     : "";
 
-    console.log(welcomeBanner)
   return (
     <header>
       <NavLink to="/">
@@ -29,7 +28,6 @@ const Header = props => {
         {props.user && (
           <button onClick={() => props.signOutUser({})}>SignOut</button>
         )}
-        {console.log(props)}
       </div>
     </header>
   );

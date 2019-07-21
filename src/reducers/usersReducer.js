@@ -19,7 +19,7 @@ export const addUsersReducer = (state = [], action) => {
 export const loginReducer = (state = { loggedIn: false }, action) => {
   switch (action.type) {
     case "SIGNIN_USER":
-      return { loggedIn: true, user: action.signInUser };
+      return { loggedIn: true, user: action.signInUser, favorites: [] };
     case "SIGNOUT_USER":
       return (state = {});
     default:

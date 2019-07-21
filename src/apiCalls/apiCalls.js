@@ -33,3 +33,27 @@ export const fetchUserSignIn = (email, password) => {
     .then(res => res.json())
     .catch(error => console.log("Error:", error));
 };
+
+export const addNewFavorite = (
+  id, userId, title, posterPath, releaseDate, voteAverage, overview
+) => {
+  const favoriteMovie = {
+    movie_id: id,
+    user_id: userId,
+    title: title,
+    poster_path: posterPath,
+    release_date: releaseDate,
+    vote_average: voteAverage,
+    overview: overview
+  };
+  console.log(favoriteMovie)
+  return fetch(`${backendUrl}/favorites/new`, {
+    method: "POST",
+    body: JSON.stringify(favoriteMovie),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(res => res.json())
+    .catch(error => console.log("Error:", error));
+};
