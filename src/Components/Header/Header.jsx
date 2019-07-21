@@ -5,11 +5,12 @@ import { signOutUser, signInUser } from "../../actions/userActions";
 import "./Header.scss";
 
 const Header = props => {
-  const compareLoginOrLogout = props.signInUser.loggedIn
-    ? "Sign Out"
-    : "Sign In";
+  // const compareLoginOrLogout = props.signInUser.loggedIn
+  //   ? "Sign Out"
+  //   : "Sign In";
+  console.log(props.signInUser)
   const welcomeBanner = props.signInUser.loggedIn
-    ? 'Welcome Back!'
+    ? `Welcome back, ${props.signInUser.name}!`
     : "";
 
   return (
@@ -25,9 +26,9 @@ const Header = props => {
         <NavLink to="/signup" className="style-header-btns">
           <button>SignUp</button>
         </NavLink>
-        {props.user && (
+        {/* {props.user && (
           <button onClick={() => props.signOutUser({})}>SignOut</button>
-        )}
+        )} */}
       </div>
     </header>
   );
@@ -38,7 +39,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  signOutUser: user => dispatch(signOutUser(user))
+  // signInUser: user => dispatch(signInUser(user.data)),
+  signOutUser: user => dispatch(signOutUser(user.data))
 });
 
 export default connect(

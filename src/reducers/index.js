@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
   grabUsers: grabUsersReducer,
   addUsers: addUsersReducer,
   login: loginReducer,
-  signOutUser: signOutUserReducer,
+  // signOutUser: signOutUserReducer,
   favoriteMovies: favoriteReducer
 });
 

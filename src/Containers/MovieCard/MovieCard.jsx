@@ -3,6 +3,7 @@ import "./MovieCard.scss";
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addNewFavorite } from '../../apiCalls/apiCalls';
+import { signInUser } from '../../actions/userActions';
 import { addFavoriteMovie } from '../../actions/favoriteAction';
 
 
@@ -20,7 +21,7 @@ export class MovieCard extends Component {
   handleFavorites = async event => {
     event.preventDefault();
     const { id, userId, title, posterPath, releaseDate, voteAverage, overview } = this.props
-    const addFavoriteMovie = await addNewFavorite(id, userId, title, posterPath, releaseDate, voteAverage, overview)
+    const addFavoriteMovie = await addNewFavorite(id, this.props.login.id, title, posterPath, releaseDate, voteAverage, overview)
     this.props.movieId(addFavoriteMovie);
 
   }
@@ -74,7 +75,8 @@ export class MovieCard extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  movieId: state.movieId
+  movieId: state.movieId,
+  login: state.login
 })
 
 const mapDispatchToProps = (dispatch) => ({

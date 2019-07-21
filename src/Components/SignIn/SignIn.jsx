@@ -21,7 +21,7 @@ class SignIn extends Component {
     event.preventDefault();
     const { email, password } = this.state;
     let signInUser = await fetchUserSignIn(email, password);
-    this.props.signInUser(signInUser.data);
+    this.props.signInUser(signInUser);
     this.props.history.push("/")
     this.resetInputs();
   };
