@@ -41,9 +41,8 @@ export class MovieCard extends Component {
           alt={title + 'background image'}
           onClick={() => this.toggleView(false)}
         />
-        <p>{title}</p>
-        <p>{voteAverage}</p>
-        <p>{overview}</p>
+        <p className="title">{title} | {voteAverage}/10</p>
+        <p className='overview'>{overview}</p>
       </article>
     )
   }
