@@ -33,11 +33,9 @@ export class MovieCard extends Component {
   )}
 
   infoCard = () => {
-    const { title, backDropPath, voteAverage, overView } = this.props;
+    const { title, backDropPath, voteAverage, overview } = this.props;
     return (
-      <article 
-        className='infoCard'
-      >
+      <article className='infoCard'>
         <img 
           src={backDropPath} 
           alt={title + 'background image'}
@@ -45,7 +43,7 @@ export class MovieCard extends Component {
         />
         <p>{title}</p>
         <p>{voteAverage}</p>
-        <p>{overView}</p>
+        <p>{overview}</p>
       </article>
     )
   }
@@ -54,6 +52,7 @@ export class MovieCard extends Component {
     const { title, posterPath, releaseDate } = this.props;
     return (
       <article className="movieCard">
+        { this.state.movieInfo && this.infoCard()}
         <img src={inactive} alt='inactive' className='inactive'/>
         <img 
           className="card-img" 
@@ -62,7 +61,6 @@ export class MovieCard extends Component {
         />
         <p className="title">{title}</p>
         <p className="year">{releaseDate}</p>
-      { this.state.movieInfo && this.infoCard()}
       </article>
     );
   }
