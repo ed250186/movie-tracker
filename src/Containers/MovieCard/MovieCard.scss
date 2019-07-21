@@ -4,7 +4,7 @@
   width: 140px;
   margin: 30px;
   img{
-    height: 180px;
+    height: auto;
     width: 140px;
     box-shadow: 2px 2px 10px black
   }
@@ -21,9 +21,11 @@
   width: 300px;
   position: relative;
   z-index: 1;
-  margin-bottom: -250px;
-  margin: 0;
+  top: -105%;
+  background: #314467;
   img {
-    width: 100%;
+    width: 90%;
+    height: auto;
+    margin: 5%;
   }
 }
