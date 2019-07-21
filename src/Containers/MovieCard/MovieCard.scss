@@ -18,7 +18,12 @@
 }
 
 .infoCard {
-  height: 250px;
-  width: 140px;
-  margin: 30px;
+  width: 300px;
+  position: relative;
+  z-index: 1;
+  margin-bottom: -250px;
+  margin: 0;
+  img {
+    width: 100%;
+  }
 }
