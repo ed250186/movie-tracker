@@ -35,10 +35,10 @@ class SignIn extends Component {
     this.setState({ email: "", password: "" });
   };
 
-  signOut = (event) => {
-    event.preventDefault();
-    this.props.signOutUser(signOutUser)
-  }
+  // signOut = (event) => {
+  //   event.preventDefault();
+  //   this.props.signOutUser(signOutUser)
+  // }
 
   render() {
     return (
@@ -73,7 +73,6 @@ class SignIn extends Component {
         {/* </form> */}
         {/* <form> */}
         </div>
-          {/* <button onClick={event => this.signOut(event)}>SignOut</button> */}
         </form>
       </div>
     )
@@ -81,13 +80,13 @@ class SignIn extends Component {
 }
 
 const mapStateToProps = state => ({
-  signInUser: state.signInUser,
-  signOutUser: state.signOutUser
+  signInUser: state.signInUser
+  // signOutUser: state.signOutUser
 });
 
 const mapDispatchToProps = dispatch => ({
-  signInUser: user => dispatch(signInUser(user.data)),
-  signOutUser: user => dispatch(signOutUser(user.data))
+  signInUser: user => dispatch(signInUser(user.data))
+  // signOutUser: user => dispatch(signOutUser(user.data))
 });
 
 export default connect(

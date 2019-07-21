@@ -26,12 +26,3 @@ export const loginReducer = (state = {}, action) => {
       return state;
   }
 };
-
-// export const signOutUserReducer = (state = {}, action) => {
-//   switch (action.type) {
-//     case "SIGNOUT_USER":
-//       return state;
-//     default:
-//       return state;
-//   }
-// };
