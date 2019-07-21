@@ -20,18 +20,6 @@ export class MovieCard extends Component {
     this.setState({movieInfo: view})
   }
 
-  movieCard = () => {
-    const { title, posterPath, releaseDate } = this.props;
-    return (
-    <article 
-        className="movieCard" 
-        onClick={() => this.toggleView(true)}>
-        <img className="card-img" src={posterPath} alt={`${title} poster`} />
-        <p className="title">{title}</p>
-        <p className="year">{releaseDate}</p>
-      </article>
-  )}
-
   infoCard = () => {
     const { title, backDropPath, voteAverage, overview } = this.props;
     return (
