@@ -1,4 +1,5 @@
-.sign-up {
+.sign-up,
+.sign-in {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -7,21 +8,36 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  form{
+  .exit {
+    height: 100%;
+    width: 100%;
+  }
+  form {
     background: #0F1C40;
     height: 50%;
     width: 50%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    input {
-      height: 30px;
-      width: 60%;
-      border: none;
-      border-radius: 50px;
-    }
-    ::-webkit-input-placeholder {
-      padding-left: 10px;
+    position: absolute;
+    z-index: 2;
+    div {
+      height: 70%;
+      width: 70%;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-content: space-around; 
+      input {
+        height: 30px;
+        width: 60%;
+        border: none;
+        border-radius: 50px;
+     }
+      ::-webkit-input-placeholder {
+        padding-left: 10px;
+     }
     }
   }
+}
+.exit-button {
+  height: 20px;
 }

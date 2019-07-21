@@ -1,8 +1,12 @@
+
+import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import './SignUp.scss';
+import exit from '../../images/cancel.png'
 import React, {Component} from 'react';
 import './SignUp.scss';
 import {createUser, allUsers} from '../../apiCalls/apiCalls.js';
-import {connect} from 'react-redux';
-import { grabUsers } from '../../actions';
+import { grabUsers, addUsers } from '../../actions/userActions';
 
 class SignUp extends Component {
   constructor(props) {
@@ -15,7 +19,6 @@ class SignUp extends Component {
   }
 
   componentDidMount() {
-    console.log(allUsers())
     this.getAllUsers()
   }
 
@@ -25,7 +28,7 @@ class SignUp extends Component {
     .catch(this.setState({ error: 'Error fetching data' }));
   }
 
-  url = () => 'http://localhost:3000/api/users/new'
+  url = () => ('http://localhost:3000/api/users/new');
   newUser = () => ({
     name: this.state.name, 
     email: this.state.email,
@@ -44,23 +47,32 @@ class SignUp extends Component {
   handleChange = (e) => {
     const {name, value} = e.target;
     this.setState({[name]: value})
+    console.log(this.props.users)
   }
 
   checkUsers = async (e) => {
     e.preventDefault()
     await this.getAllUsers()
+    console.log(this.props)
     const copys = this.props.users.filter(user => user.email === this.state.email)
     copys.length === 0 ? this.addUser() : console.log('User Exsists')
   }
 
   addUser = () => {
     createUser(this.url(), this.post())
+    this.props.history.push("/")
   }
 
   render() {
     return (
       <div className='sign-up'>
+        <NavLink to='/' className='exit'>
+        </NavLink>
         <form onSubmit={this.checkUsers}>
+        <NavLink to='/'>
+            <img src={exit} alt="exit sign-in button" className='exit-button'/>
+          </NavLink>
+          <div>
           <input 
             type="text" 
             placeholder='name' 
@@ -85,6 +97,7 @@ class SignUp extends Component {
             value='Submit'
             className='button'
             />
+            </div>
         </form>
       </div>
     )
@@ -92,10 +105,11 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  users: state.users
+  users: state.grabUsers
 })
 
 const mapDispatchToProps = (dispatch) => ({
+  addUsers: (users) => dispatch(addUsers(users)),
   grabUsers: (users) => dispatch(grabUsers(users))
 })
 

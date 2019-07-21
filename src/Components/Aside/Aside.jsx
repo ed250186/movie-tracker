@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './Aside.scss';
 
 
+
 class Aside extends Component {
   constructor() {
     super()
@@ -10,13 +11,15 @@ class Aside extends Component {
     }
   }
 
+  image ={
+    height: '50px'
+}
 
 
   render() {
     return(
       <aside>
         <button>Favorites</button>
-
       </aside>
     )
   }
