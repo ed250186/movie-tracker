@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./MovieCard.scss";
 import PropTypes from 'prop-types';
 // import active from '../../images/bookmark-active.png';
-// import inactive from '../../images/bookmark-inactive.png';
+import inactive from '../../images/bookmark-inactive.png';
 
 
 export class MovieCard extends Component {
@@ -18,8 +18,6 @@ export class MovieCard extends Component {
 
   toggleView = (view) => {
     this.setState({movieInfo: view})
-    // console.log(this.props)
-    // console.log(this.state.movieInfo)
   }
 
   movieCard = () => {
@@ -52,29 +50,20 @@ export class MovieCard extends Component {
     )
   }
 
-  // cards = () => {
-  //   if(this.state.movieInfo) {
-  //     return this.infoCard()
-  //   } else {
-  //     return this.movieCard()
-  //   }
-  // }
-
   render() {
     const { title, posterPath, releaseDate } = this.props;
     return (
-      <article 
-        className="movieCard" 
-      >
-      <img 
-        className="card-img" 
-        src={posterPath} alt={`${title} poster`} 
-        onClick={() => this.toggleView(true)}
-      />
-      <p className="title">{title}</p>
-      <p className="year">{releaseDate}</p>
-      {this.state.movieInfo && this.infoCard()}
-    </article>
+      <article className="movieCard">
+        <img src={inactive} alt='inactive' className='inactive'/>
+        <img 
+          className="card-img" 
+          src={posterPath} alt={`${title} poster`} 
+          onClick={() => this.toggleView(true)}
+        />
+        <p className="title">{title}</p>
+        <p className="year">{releaseDate}</p>
+      { this.state.movieInfo && this.infoCard()}
+      </article>
     );
   }
 }
