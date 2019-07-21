@@ -97,7 +97,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  addUsers: (users) => dispatch(addUsers(users))
+  addUsers: (users) => dispatch(addUsers(users)),
+  grabUsers: (users) => dispatch(grabUsers(users))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
