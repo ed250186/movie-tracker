@@ -1,14 +1,11 @@
-// import React, { Component } from 'react';
+
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-// import { grabUsers } from '../../actions/userActions';
-// import { allUsers, createUser } from '../../apiCalls/apiCalls.js';
 import './SignUp.scss';
 import exit from '../../images/cancel.png'
 import React, {Component} from 'react';
 import './SignUp.scss';
 import {createUser, allUsers} from '../../apiCalls/apiCalls.js';
-// import {connect} from 'react-redux';
 import { grabUsers, addUsers } from '../../actions/userActions';
 
 class SignUp extends Component {

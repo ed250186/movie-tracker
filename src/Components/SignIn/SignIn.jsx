@@ -1,16 +1,12 @@
 import React, {Component} from 'react';
 import { connect }  from 'react-redux';
 import "../SignUp/SignUp.scss";
-// import { signInUser } from "../../actions/userActions";
-// import { fetchUserSignIn } from "../../apiCalls/apiCalls.js";
 import { NavLink } from "react-router-dom";
 import exit from '../../images/cancel.png'
-
-// import React, { Component } from "react";
 import { signInUser, signOutUser } from "../../actions/userActions";
 import { fetchUserSignIn } from "../../apiCalls/apiCalls.js";
 import "../SignUp/SignUp.scss";
-// import { moviesReducer } from '../../reducers/moviesReducer'
+
 
 class SignIn extends Component {
   constructor(props) {
