@@ -3,7 +3,6 @@ import "./MovieCard.scss";
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addNewFavorite } from '../../apiCalls/apiCalls';
-import { signInUser } from '../../actions/userActions';
 import { addFavoriteMovie } from '../../actions/favoriteAction';
 
 

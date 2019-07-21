@@ -3,7 +3,7 @@ import { connect }  from 'react-redux';
 import "../SignUp/SignUp.scss";
 import { NavLink } from "react-router-dom";
 import exit from '../../images/cancel.png'
-import { signInUser, signOutUser } from "../../actions/userActions";
+import { signInUser } from "../../actions/userActions";
 import { fetchUserSignIn } from "../../apiCalls/apiCalls.js";
 import "../SignUp/SignUp.scss";
 
@@ -35,10 +35,6 @@ class SignIn extends Component {
     this.setState({ email: "", password: "" });
   };
 
-  // signOut = (event) => {
-  //   event.preventDefault();
-  //   this.props.signOutUser(signOutUser)
-  // }
 
   render() {
     return (
@@ -80,13 +76,11 @@ class SignIn extends Component {
 }
 
 const mapStateToProps = state => ({
-  signInUser: state.signInUser
-  // signOutUser: state.signOutUser
+  login: state.login
 });
 
 const mapDispatchToProps = dispatch => ({
   signInUser: user => dispatch(signInUser(user.data))
-  // signOutUser: user => dispatch(signOutUser(user.data))
 });
 
 export default connect(

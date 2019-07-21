@@ -22,6 +22,8 @@ export const loginReducer = (state = {}, action) => {
       return { ...action.signInUser, loggedIn: true, favorites: [] };
     case "SIGNOUT_USER":
       return (state = {});
+    case "SIGNIN_ERROR":
+      return {error: 'Please enter in correct username or password', loggedIn: false}
     default:
       return state;
   }

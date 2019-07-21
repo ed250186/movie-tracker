@@ -1,6 +1,7 @@
 import { cleanMovies } from "./Cleaner.js";
 import { baseUrl, backendUrl } from "./paths";
 import { key } from "./apiKey";
+import { signInError, signInUser } from '../actions/userActions'
 
 export const nowPlaying = () => {
   return fetch(
@@ -31,7 +32,7 @@ export const fetchUserSignIn = (email, password) => {
     }
   })
     .then(res => res.json())
-    .catch(error => console.log("Error:", error));
+    .catch(error => signInUser(error));
 };
 
 export const addNewFavorite = (
