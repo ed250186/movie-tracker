@@ -8,6 +8,7 @@ export const cleanMovies = (movies) => {
         voteAverage: movie.vote_average,
         posterPath: `${imageUrl}${movie.poster_path}`,
         releaseDate: movie.release_date,
-        genreIds: movie.genre_ids
+        genreIds: movie.genre_ids,
+        backDropPath: `${imageUrl}${movie.backdrop_path}`
     }))
 }

@@ -1,13 +1,13 @@
 import React from "react";
-import { Router, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { signOutUser, signInUser } from "../../actions/userActions";
 import "./Header.scss";
 
 const Header = props => {
-  const compareLoginOrLogout = props.signInUser.loggedIn
-    ? "Sign Out"
-    : "Sign In";
+  // const compareLoginOrLogout = props.signInUser.loggedIn
+  //   ? "Sign Out"
+  //   : "Sign In";
   const welcomeBanner = props.signInUser.loggedIn
     ? 'Welcome Back!'
     : "";

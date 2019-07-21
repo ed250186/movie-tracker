@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import './Aside.scss';
+import active from '../../images/bookmark-active.png';
+import inactive from '../../images/bookmark-inactive.png';
 
 
 class Aside extends Component {
@@ -10,13 +12,17 @@ class Aside extends Component {
     }
   }
 
+  image ={
+    height: '50px'
+}
 
 
   render() {
     return(
       <aside>
         <button>Favorites</button>
-
+        <img style={this.image} src={active} alt=""/>
+        <img style={this.image} src={inactive} alt=""/>
       </aside>
     )
   }

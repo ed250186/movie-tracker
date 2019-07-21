@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-// import { grabUsers } from '../../actions';
 import { connect }  from 'react-redux';
 import "../SignUp/SignUp.scss";
-// import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import exit from '../../images/cancel.png'
 import { signInUser, signOutUser } from "../../actions/userActions";
 import { fetchUserSignIn } from "../../apiCalls/apiCalls.js";
 import "../SignUp/SignUp.scss";
-import { moviesReducer } from '../../reducers/moviesReducer'
+
 
 class SignIn extends Component {
   constructor(props) {
@@ -43,7 +43,13 @@ class SignIn extends Component {
   render() {
     return (
       <div className='sign-in'>
+        <NavLink to='/' className='exit'>
+        </NavLink>
         <form onSubmit={this.handleLogin}>
+          <NavLink to='/'>
+            <img src={exit} alt="exit sign-in button" className='exit-button'/>
+          </NavLink>
+          <div>
           <input 
             name='email'
             value={this.state.email}
@@ -64,8 +70,9 @@ class SignIn extends Component {
           />
           {/* <h2>{this.state.loginMessage}</h2> */}
           {/* <p>Create new account here</p> */}
-        </form>
-        <form>
+        {/* </form> */}
+        {/* <form> */}
+        </div>
           <button onClick={event => this.signOut(event)}>SignOut</button>
         </form>
       </div>

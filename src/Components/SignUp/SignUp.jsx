@@ -1,7 +1,11 @@
+
+import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import './SignUp.scss';
+import exit from '../../images/cancel.png'
 import React, {Component} from 'react';
 import './SignUp.scss';
 import {createUser, allUsers} from '../../apiCalls/apiCalls.js';
-import {connect} from 'react-redux';
 import { grabUsers, addUsers } from '../../actions/userActions';
 
 class SignUp extends Component {
@@ -20,7 +24,7 @@ class SignUp extends Component {
 
   getAllUsers = () => {
     return allUsers()
-    .then(users => this.props.addUsers(users))
+    .then(users => this.props.grabUsers(users))
     .catch(this.setState({ error: 'Error fetching data' }));
   }
 
@@ -43,6 +47,7 @@ class SignUp extends Component {
   handleChange = (e) => {
     const {name, value} = e.target;
     this.setState({[name]: value})
+    console.log(this.props.users)
   }
 
   checkUsers = async (e) => {
@@ -61,7 +66,13 @@ class SignUp extends Component {
   render() {
     return (
       <div className='sign-up'>
+        <NavLink to='/' className='exit'>
+        </NavLink>
         <form onSubmit={this.checkUsers}>
+        <NavLink to='/'>
+            <img src={exit} alt="exit sign-in button" className='exit-button'/>
+          </NavLink>
+          <div>
           <input 
             type="text" 
             placeholder='name' 
@@ -86,6 +97,7 @@ class SignUp extends Component {
             value='Submit'
             className='button'
             />
+            </div>
         </form>
       </div>
     )
