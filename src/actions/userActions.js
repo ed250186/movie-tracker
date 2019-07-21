@@ -13,12 +13,17 @@ export const signInUser = signInUser => ({
   signInUser
 });
 
-// export const login = user => ({
-//   type: 'LOGIN',
-//   user
-// })
-
 export const signOutUser = signOutUser => ({
   type: "SIGNOUT_USER",
   signOutUser
 });
+
+export const signInError = error => ({
+  type: "SIGNIN_ERROR",
+  error
+});
+
+export const signUpError = error => ({
+  type: "SIGNUP_ERROR",
+  error
+})

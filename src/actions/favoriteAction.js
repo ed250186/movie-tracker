@@ -1,9 +1,10 @@
-export const addFavoriteMovie = (favorite) => ({
+export const addFavoriteMovie = (movieId, userId) => ({
     type: 'ADD_FAVORITE_MOVIE',
-    favorite
+    movieId,
+    userId
 })
 
-expoer const getFavoriteMovies = (favorites) => ({
+export const getFavoriteMovies = (favorites) => ({
     type: 'GET_FAVORITE_MOVIES',
     favorites
 })

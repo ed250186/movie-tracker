@@ -3,7 +3,7 @@ import { connect }  from 'react-redux';
 import "../SignUp/SignUp.scss";
 import { NavLink } from "react-router-dom";
 import exit from '../../images/cancel.png'
-import { signInUser, signOutUser } from "../../actions/userActions";
+import { signInUser } from "../../actions/userActions";
 import { fetchUserSignIn } from "../../apiCalls/apiCalls.js";
 import "../SignUp/SignUp.scss";
 
@@ -21,7 +21,7 @@ class SignIn extends Component {
     event.preventDefault();
     const { email, password } = this.state;
     let signInUser = await fetchUserSignIn(email, password);
-    this.props.signInUser(signInUser.data);
+    this.props.signInUser(signInUser);
     this.props.history.push("/")
     this.resetInputs();
   };
@@ -35,10 +35,6 @@ class SignIn extends Component {
     this.setState({ email: "", password: "" });
   };
 
-  signOut = (event) => {
-    event.preventDefault();
-    this.props.signOutUser(signOutUser)
-  }
 
   render() {
     return (
@@ -69,11 +65,10 @@ class SignIn extends Component {
             className='button'
           />
           {/* <h2>{this.state.loginMessage}</h2> */}
-          {/* <p>Create new account here</p> */}
+          <p>Create new account here</p>
         {/* </form> */}
         {/* <form> */}
         </div>
-          <button onClick={event => this.signOut(event)}>SignOut</button>
         </form>
       </div>
     )
@@ -81,13 +76,11 @@ class SignIn extends Component {
 }
 
 const mapStateToProps = state => ({
-  signInUser: state.signInUser,
-  signOutUser: state.signOutUser
+  login: state.login
 });
 
 const mapDispatchToProps = dispatch => ({
-  signInUser: user => dispatch(signInUser(user.data)),
-  signOutUser: user => dispatch(signOutUser(user.data))
+  signInUser: user => dispatch(signInUser(user.data))
 });
 
 export default connect(

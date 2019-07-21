@@ -16,21 +16,14 @@ export const addUsersReducer = (state = [], action) => {
   }
 };
 
-export const loginReducer = (state = { loggedIn: false }, action) => {
+export const loginReducer = (state = {}, action) => {
   switch (action.type) {
     case "SIGNIN_USER":
-      return { loggedIn: true, user: action.signInUser };
+      return { ...action.signInUser, loggedIn: true, favorites: [] };
     case "SIGNOUT_USER":
       return (state = {});
-    default:
-      return state;
-  }
-};
-
-export const signOutUserReducer = (state = {}, action) => {
-  switch (action.type) {
-    case "SIGNOUT_USER":
-      return state;
+    case "SIGNIN_ERROR":
+      return {error: 'Please enter in correct username or password', loggedIn: false}
     default:
       return state;
   }

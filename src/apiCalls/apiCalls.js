@@ -1,6 +1,7 @@
 import { cleanMovies } from "./Cleaner.js";
 import { baseUrl, backendUrl } from "./paths";
 import { key } from "./apiKey";
+import { signInError, signInUser } from '../actions/userActions'
 
 export const nowPlaying = () => {
   return fetch(
@@ -26,6 +27,30 @@ export const fetchUserSignIn = (email, password) => {
   return fetch(backendUrl, {
     method: "POST",
     body: JSON.stringify(user),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(res => res.json())
+    .catch(error => signInUser(error));
+};
+
+export const addNewFavorite = (
+  id, userId, title, posterPath, releaseDate, voteAverage, overview
+) => {
+  const favoriteMovie = {
+    movie_id: id,
+    user_id: userId,
+    title: title,
+    poster_path: posterPath,
+    release_date: releaseDate,
+    vote_average: voteAverage,
+    overview: overview
+  };
+  console.log(favoriteMovie)
+  return fetch(`${backendUrl}/favorites/new`, {
+    method: "POST",
+    body: JSON.stringify(favoriteMovie),
     headers: {
       "Content-Type": "application/json"
     }

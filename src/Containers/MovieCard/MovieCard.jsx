@@ -3,6 +3,9 @@ import "./MovieCard.scss";
 import PropTypes from 'prop-types';
 // import active from '../../images/bookmark-active.png';
 import inactive from '../../images/bookmark-inactive.png';
+import { connect } from 'react-redux';
+import { addNewFavorite } from '../../apiCalls/apiCalls';
+import { addFavoriteMovie } from '../../actions/favoriteAction';
 
 
 export class MovieCard extends Component {
@@ -14,6 +17,14 @@ export class MovieCard extends Component {
       error: "",
       movieInfo: false
     };
+  }
+
+  handleFavorites = async event => {
+    event.preventDefault();
+    const { id, userId, title, posterPath, releaseDate, voteAverage, overview } = this.props
+    const addFavoriteMovie = await addNewFavorite(id, this.props.login.id, title, posterPath, releaseDate, voteAverage, overview)
+    this.props.movieId(addFavoriteMovie);
+
   }
 
   toggleView = (view) => {
@@ -53,10 +64,19 @@ export class MovieCard extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  movieId: state.movieId,
+  login: state.login
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  movieId: id => dispatch(addFavoriteMovie(id))
+})
+
 MovieCard.propTypes = {
   posterPath: PropTypes.string,
   title: PropTypes.string,
   releaseDate: PropTypes.string
 }
 
-export default MovieCard;
+export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);
