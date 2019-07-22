@@ -37,3 +37,13 @@ exports[`App should match snapshot 1`] = `
   />
 </div>
 `;
+
+exports[`App should render people home page 1`] = `
+<React.Fragment>
+  <Aside />
+  <main>
+    <Memo(ConnectFunction) />
+    <Memo(ConnectFunction) />
+  </main>
+</React.Fragment>
+`;
