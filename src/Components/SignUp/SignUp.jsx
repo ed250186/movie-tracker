@@ -14,7 +14,9 @@ class SignUp extends Component {
     this.state = {
       name: '',
       email: '',
-      password: ''
+      password: '',
+      userExistsMessage: '',
+      error: ''
     }
   }
 
@@ -47,21 +49,25 @@ class SignUp extends Component {
   handleChange = (e) => {
     const {name, value} = e.target;
     this.setState({[name]: value})
-    console.log(this.props.users)
   }
 
   checkUsers = async (e) => {
     e.preventDefault()
     await this.getAllUsers()
-    console.log(this.props)
-    const copys = this.props.users.filter(user => user.email === this.state.email)
-    copys.length === 0 ? this.addUser() : console.log('User Exsists')
+    const copies = this.props.users.filter(user => user.email === this.state.email)
+    copies.length === 0 ? this.addUser() : this.setState({userExistsMessage: 'User Already Exists'})
+    // this.resetInputs();
   }
 
   addUser = () => {
     createUser(this.url(), this.post())
     this.props.history.push("/")
   }
+
+  resetInputs = () => {
+    console.log('hiiiiiiiii')
+    this.setState({name: '', email: '', password: ''});
+  };
 
   render() {
     return (
@@ -75,18 +81,21 @@ class SignUp extends Component {
           <div>
           <input 
             type="text" 
+            value={this.state.name}
             placeholder='name' 
             name='name'
             onChange={this.handleChange}
           />
           <input 
             type="text" 
+            value={this.state.email}
             placeholder='email' 
             name='email'
             onChange={this.handleChange}
           />
           <input 
-            type="text" 
+            type="password" 
+            value={this.state.password}
             placeholder='password' 
             name='password'
             onChange={this.handleChange}
@@ -96,7 +105,13 @@ class SignUp extends Component {
             name="submit" 
             value='Submit'
             className='button'
+            onClick ={this.resetInputs}
             />
+            {this.state.userExistsMessage === ''  ? (
+          <p></p>
+        ) : (
+          <p>{this.state.userExistsMessage}</p>
+        )}
             </div>
         </form>
       </div>
