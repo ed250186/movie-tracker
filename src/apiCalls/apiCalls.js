@@ -18,8 +18,17 @@ export const allUsers = () => {
     .then(data => data.data);
 };
 
-export const createUser = (url, user) => {
-  return fetch(url, user).then(response => response.json());
+export const createUser = (name, email, password) => {
+  const user = {name: name, email: email, password: password}
+  return fetch(`${backendUrl}/new`, {
+    method: "POST",
+    body: JSON.stringify(user),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => response.json())
+    .catch(error => error);
 };
 
 export const fetchUserSignIn = (email, password) => {

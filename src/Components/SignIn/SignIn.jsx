@@ -6,8 +6,6 @@ import exit from '../../images/cancel.png'
 import { signInUser } from "../../actions/userActions";
 import { fetchUserSignIn } from "../../apiCalls/apiCalls.js";
 import "../SignUp/SignUp.scss";
-import { sign } from 'crypto';
-
 
 class SignIn extends Component {
   constructor(props) {
