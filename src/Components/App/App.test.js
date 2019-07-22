@@ -3,11 +3,10 @@ import {shallow} from 'enzyme';
 import App from './App';
 
 describe('App', () => {
-  let wrapper, instance;
+  let wrapper
 
   beforeEach(() => {
     wrapper = shallow(<App/>);
-    instance = wrapper.instance();
   })
 
   it('should match snapshot', () => {

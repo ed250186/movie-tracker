@@ -8,7 +8,7 @@ import './SignUp.scss';
 import {createUser, allUsers} from '../../apiCalls/apiCalls.js';
 import { grabUsers, addUsers } from '../../actions/userActions';
 
-class SignUp extends Component {
+export class SignUp extends Component {
   constructor(props) {
     super(props) 
     this.state = {

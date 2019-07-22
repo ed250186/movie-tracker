@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { signOutUser } from "../../actions/userActions";
 import "./Header.scss";
 
-const Header = props => {
+export const Header = props => {
   const welcomeBanner = props.login.loggedIn
     ? `Welcome back, ${props.login.name}!`
     : "";
