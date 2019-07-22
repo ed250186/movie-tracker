@@ -1,12 +1,12 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import App from './App';
+import Aside from './Aside';
 
 describe('App', () => {
   let wrapper, instance;
 
   beforeEach(() => {
-    wrapper = shallow(<App/>);
+    wrapper = shallow(<Aside/>);
     instance = wrapper.instance();
   })
 
