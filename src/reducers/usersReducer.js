@@ -11,6 +11,8 @@ export const addUsersReducer = (state = [], action) => {
   switch (action.type) {
     case "ADD_USERS":
       return [...state, action.addUsers];
+    case "SIGNUP_ERROR":
+      return state = 'Email already exists in system. Please log in.'
     default:
       return state;
   }

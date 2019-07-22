@@ -5,8 +5,8 @@ import './SignUp.scss';
 import exit from '../../images/cancel.png'
 import React, {Component} from 'react';
 import './SignUp.scss';
-import {createUser, allUsers} from '../../apiCalls/apiCalls.js';
-import { grabUsers, addUsers } from '../../actions/userActions';
+import { createUser } from '../../apiCalls/apiCalls.js';
+import { addUsers } from '../../actions/userActions';
 
 class SignUp extends Component {
   constructor(props) {
@@ -16,57 +16,29 @@ class SignUp extends Component {
       email: '',
       password: '',
       userExistsMessage: '',
-      error: ''
     }
   }
-
-  componentDidMount() {
-    this.getAllUsers()
-  }
-
-  getAllUsers = () => {
-    return allUsers()
-    .then(users => this.props.grabUsers(users))
-    .catch(this.setState({ error: 'Error fetching data' }));
-  }
-
-  url = () => ('http://localhost:3000/api/users/new');
-  newUser = () => ({
-    name: this.state.name, 
-    email: this.state.email,
-    password: this.state.password
-  })
-
-  post = () =>  ({
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(this.newUser())
-  })
 
   handleChange = (e) => {
     const {name, value} = e.target;
     this.setState({[name]: value})
   }
 
-  checkUsers = async (e) => {
-    e.preventDefault()
-    await this.getAllUsers()
-    const copies = this.props.users.find(user => user.email === this.state.email)
-    console.log(copies)
-    copies.email ? this.setState({userExistsMessage: 'User Already Exists'}) : this.addUser()
-    // this.resetInputs();
-  }
+  handleSignUp = async event => {
+    event.preventDefault();
 
-  addUser = () => {
-    createUser(this.url(), this.post())
-    this.props.history.push("/")
+    const { name, email, password } = this.state;
+    let addUsers = await createUser(name, email, password);
+    if (!addUsers.error) {
+      this.props.addUsers(addUsers)
+      this.props.history.push("/")
+    } else {
+      this.setState({userExistsMessage: 'Email address already exists in the system. Please log in.'})
+    }
+    this.resetInputs();
   }
 
   resetInputs = () => {
-    console.log('hiiiiiiiii')
     this.setState({name: '', email: '', password: ''});
   };
 
@@ -106,14 +78,14 @@ class SignUp extends Component {
             name="submit" 
             value='Submit'
             className='button'
-            onClick ={this.resetInputs}
+            onClick ={event => this.handleSignUp(event)}
             />
             {this.state.userExistsMessage === ''  ? (
-          <p></p>
-        ) : (
-          <p>{this.state.userExistsMessage}</p>
-        )}
-            </div>
+              <p></p>
+            ) : (
+              <p>{this.state.userExistsMessage}</p>
+            )}
+          </div>
         </form>
       </div>
     )
@@ -121,12 +93,11 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  users: state.grabUsers
+  users: state.grabUsers,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  addUsers: (users) => dispatch(addUsers(users)),
-  grabUsers: (users) => dispatch(grabUsers(users))
+  addUsers: (users) => dispatch(addUsers(users))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
