@@ -32,7 +32,7 @@ export const fetchUserSignIn = (email, password) => {
     }
   })
     .then(res => res.json())
-    .catch(error => signInUser(error));
+    .catch(error => console.log(error));
 };
 
 export const addNewFavorite = (
