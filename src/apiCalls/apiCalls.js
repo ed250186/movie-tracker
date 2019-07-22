@@ -35,6 +35,12 @@ export const fetchUserSignIn = (email, password) => {
     .catch(error => console.log(error));
 };
 
+export const fetchFavoriteMovies = async userId => {
+  return await fetch (`http://localhost:3000/api/users/${userId}/favorites`)
+    .then(response => response.json())
+    .catch(error => error)
+};
+
 export const addNewFavorite = (
   id, userId, title, posterPath, releaseDate, voteAverage, overview
 ) => {

@@ -54,8 +54,9 @@ class SignUp extends Component {
   checkUsers = async (e) => {
     e.preventDefault()
     await this.getAllUsers()
-    const copies = this.props.users.filter(user => user.email === this.state.email)
-    copies.length === 0 ? this.addUser() : this.setState({userExistsMessage: 'User Already Exists'})
+    const copies = this.props.users.find(user => user.email === this.state.email)
+    console.log(copies)
+    copies.email ? this.setState({userExistsMessage: 'User Already Exists'}) : this.addUser()
     // this.resetInputs();
   }
 
