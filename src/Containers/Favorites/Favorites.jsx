@@ -1,39 +1,57 @@
-import React, {Component} from "react";
-import MovieCard from '../MovieCard/MovieCard.jsx'
-import { connect } from 'react-redux';
-import { fetchFavoriteMovies }  from '../../apiCalls/apiCalls'
-import { addFavoriteMovie } from '../../actions/favoriteAction';
+import React, { Component } from "react";
+import MovieCard from "../MovieCard/MovieCard.jsx";
+import { connect } from "react-redux";
+import { fetchFavoriteMovies } from "../../apiCalls/apiCalls";
+import { addFavoriteMovie } from "../../actions/favoriteAction";
 
 class Favorites extends Component {
   constructor(props) {
     super(props);
-    console.log('props', props)
+    this.state = {
+      displayFavMovies: false,
+      error: ""
+    };
   }
-  async componentDidMount() {
-    await fetchFavoriteMovies()
-      .then(favorites => this.props.addFavoriteMovie(favorites))
-      .catch(this.setState({ error: "Error fetching data" }));
+  displayFavoriteMovies = movies => {
+    return movies.map(movie => {
+      return <MovieCard 
+        {...movie} 
+        key={movie.id} 
+        title={movie.title} 
+        />
+    })
+  };
+
+  findFaves = () => {
+    const { favorites, movies } = this.props;
+    const faves = favorites.map(fav => {
+      return movies.find(movie => {
+        return movie.title === fav.title
+      })
+    })
+    return this.displayFavoriteMovies(faves);
   }
 
   render() {
-    const { favorites } = this.props;
-  const displayFavoriteMovies = favorites.map(movie => (
-    <MovieCard {...movie} key={movie.id} title={movie.title} />
-  ));
-  return (
-      <article>
-          {displayFavoriteMovies}
-      </article>
-  )
+    
+    return (
+    <article>
+      {!this.props.displayFavMovies && this.displayFavoriteMovies(this.props.movies)}
+      {this.props.displayFavMovies && this.findFaves()}
+    </article>
+    );
   }
-};
+}
 
 const mapStateToProps = state => ({
-  favorites: state.favorites
-})
+  favorites: state.favorites,
+  movies: state.movies
+});
 
 const mapDispatchToProps = dispatch => ({
-  addFavoriteMovie: favorites => dispatch(addFavoriteMovie(favorites))
-})
+  // setMovies: movies => dispatch(setMovies(movies))
+});
 
-export default connect(mapStateToProps)(Favorites)
+export default connect(
+  mapStateToProps
+)(Favorites);

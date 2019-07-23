@@ -44,8 +44,14 @@ export const fetchUserSignIn = (email, password) => {
     .catch(error => console.log(error));
 };
 
-export const fetchFavoriteMovies = async userId => {
-  return await fetch (`http://localhost:3000/api/users/${userId}/favorites`)
+export const fetchFavoriteMovies = async (url, obj, func, err) => {
+  const response = await fetch (url, {
+    method: func,
+    headers: {
+      'Content-Type': 'applications/json'
+    },
+    body: JSON.stringify(obj)
+  })
     .then(response => response.json())
     .catch(error => error)
 };

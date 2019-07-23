@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./MovieCard.scss";
 import PropTypes from "prop-types";
-import active from '../../images/bookmark-active.png';
+import active from "../../images/bookmark-active.png";
 import inactive from "../../images/bookmark-inactive.png";
 import { connect } from "react-redux";
 import { addNewFavorite, fetchFavoriteMovies } from "../../apiCalls/apiCalls";
@@ -11,7 +11,6 @@ export class MovieCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      favorites: null,
       favorited: false,
       error: "",
       movieInfo: false
@@ -21,6 +20,7 @@ export class MovieCard extends Component {
   handleFavorites = async event => {
     event.preventDefault();
     const {
+      favorites,
       id,
       userId,
       title,
@@ -29,7 +29,8 @@ export class MovieCard extends Component {
       voteAverage,
       overview
     } = this.props;
-    const addFavoriteMovie = await addNewFavorite(
+    console.log('fav', favorites)
+    const addFav = await addNewFavorite(
       id,
       this.props.login.id,
       title,
@@ -38,32 +39,33 @@ export class MovieCard extends Component {
       voteAverage,
       overview
     );
-    if (addFavoriteMovie) {
-      this.props.movieId(addFavoriteMovie);
+    if (addFav) {
+      this.props.addFavoriteMovie(addFav);
     } else {
       this.setState({ error: "Please login to be able to favorite a movie" });
     }
     if (this.props.login.loggedIn) {
-      this.toggleFavorite()
+      this.toggleFavorite();
     }
   };
 
-  toggleFavorite () {
+  toggleFavorite = async (obj, url, func, err) => {
+    try {
+      await fetchFavoriteMovies(url, obj, func)
+      let response = await fetch(`http://localhost:3000/api/users/${this.props.login.id}/favorites`)
+      let favMovie = await response.json()
+      await this.props.addFavoriteMovie(favMovie.data)
+      console.log(this.props.addFavoriteMovie(favMovie.data))
+    } catch(err) {
+      console.log(err)
+    }
     if (!this.state.favorited) {
-      // this.addFavorite(this.props.user_id);
-      console.log(this.state.favorited)
-      this.setState({ favorited: true})
+      this.setState({ favorited: true });
     } else {
-      // this.deleteFavorite(userId, movieId);
-      console.log(this.state.favorited)
-      this.setState({ favorited: false})
+      this.setState({ favorited: false });
     }
   }
 
-  addFavorite = (userId) => {
-    // const { movie } = this.props;
-    addNewFavorite(userId)
-  };
 
   toggleView = view => {
     this.setState({ movieInfo: view });
@@ -90,9 +92,14 @@ export class MovieCard extends Component {
     const { title, posterPath, releaseDate } = this.props;
     return (
       <article className="movieCard">
-      {this.state.error === '' ? (<p></p>) : (<p>{this.state.error}</p>)}
+        {this.state.error === "" ? <p /> : <p>{this.state.error}</p>}
         {this.state.movieInfo && this.infoCard()}
-        <img src={this.state.favorited ? active : inactive} alt="inactive" className="inactive" onClick={this.handleFavorites} />
+        <img
+          src={this.state.favorited ? active : inactive}
+          alt="inactive"
+          className="inactive"
+          onClick={this.handleFavorites}
+        />
         <img
           className="card-img"
           src={posterPath}
@@ -107,13 +114,13 @@ export class MovieCard extends Component {
 }
 
 const mapStateToProps = state => ({
-  movieId: state.movieId,
+  movies: state.movies,
   login: state.login,
   favorites: state.favorites
 });
 
 const mapDispatchToProps = dispatch => ({
-  movieId: id => dispatch(addFavoriteMovie(id))
+  addFavoriteMovie: movie => dispatch(addFavoriteMovie(movie))
 });
 
 MovieCard.propTypes = {
