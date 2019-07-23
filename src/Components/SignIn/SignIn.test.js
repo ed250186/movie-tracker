@@ -2,12 +2,12 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {SignIn} from './SignIn';
 
-//54, 25, 60, 59
+//82.14 |       50 |    63.64 |    88.46 |
 
-//lines ... 25,26,28,30,90
+//lines 21,34,98 
 
 describe('SignIn', () => {
-  let wrapper
+  let wrapper, props
   let mockEvent = { 
     preventDefault: jest.fn(),
     target: {
@@ -15,7 +15,11 @@ describe('SignIn', () => {
     value: 'nathan.froeh@gmail.com'
   }}
   beforeEach(() => {
-    wrapper = shallow(<SignIn />);
+    props = {
+      signInUser: jest.fn((prop) => console.log(prop)),
+      history: []
+    }
+    wrapper = shallow(<SignIn {...props}/>);
   })
 
   it('should match snapshot', () => {
@@ -49,7 +53,23 @@ describe('SignIn', () => {
     expect(wrapper.state('email')).toEqual('nathan.froeh@gmail.com')
   })
 
-  
+  xit('should call signInUser', () => {
+    wrapper.instance().getUser = jest.fn(() => 'Nathan')
+    wrapper.setState({email: '1', password: '2'})
+    wrapper.instance().handleLogin(mockEvent)
+    expect(props.signInUser).toHaveBeenCalled()
+  })
+
+  it('should call resetInputs', () => {
+    wrapper.instance().getUser = jest.fn(() => 'Nathan')
+    wrapper.setState({email: '1', password: '2'})
+    wrapper.instance().resetInputs = wrapper.setState({
+      email: '',
+      password: ''
+    })
+    wrapper.instance().handleLogin(mockEvent)
+    expect(wrapper.state('email')).toEqual('')
+  })
 
 
 

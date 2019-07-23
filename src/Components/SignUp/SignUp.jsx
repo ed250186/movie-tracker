@@ -26,7 +26,6 @@ export class SignUp extends Component {
 
   handleSignUp = async event => {
     event.preventDefault();
-
     const { name, email, password } = this.state;
     let addUsers = await createUser(name, email, password);
     if (!addUsers.error) {

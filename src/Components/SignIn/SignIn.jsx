@@ -17,16 +17,20 @@ export class SignIn extends Component {
     };
   }
 
+  getUser = (email, password) => {
+    return fetchUserSignIn(email, password);
+  }
+
   handleLogin = async event => {
     event.preventDefault();
     const { email, password } = this.state;
-      let signInUser = await fetchUserSignIn(email, password);
-      if (signInUser){
-        this.props.signInUser(signInUser)
-        this.props.history.push("/")
-      }else {
-        this.setState({error: "Incorrect Username or Password"})
-      }
+    let signInUser = await this.getUser(email, password);
+    if (signInUser){
+      this.props.signInUser(signInUser)
+      this.props.history.push("/")
+    }else {
+      this.setState({error: "Incorrect Username or Password"})
+    }
     this.resetInputs();
   };
 
@@ -36,6 +40,7 @@ export class SignIn extends Component {
   };
 
   resetInputs = () => {
+    console.log('input')
     this.setState({ email: "", password: "" });
   };
 
