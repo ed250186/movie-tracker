@@ -64,10 +64,7 @@ export class SignIn extends Component {
             value='Sign In' 
             className='button'
           />
-          {/* <h2>{this.state.loginMessage}</h2> */}
           <p>Create new account here</p>
-        {/* </form> */}
-        {/* <form> */}
         </div>
         </form>
       </div>

@@ -14,9 +14,14 @@ export const Header = props => {
     props.signOutUser(signOutUser)
   }
 
-  const btns = props.login.loggedIn ? (
-    <button onClick={event => signOut(event)}>SignOut</button>
-  ) : (
+  const btns = () => {
+    if(props.login.loggedIn) {return (
+    <button onClick={event => signOut(event)}
+      className='signOut'
+    >
+      SignOut
+    </button>
+  )} else { return (
     <div>
       <NavLink to="/signin" className="style-header-btns">
         <button>SignIn</button>
@@ -25,8 +30,8 @@ export const Header = props => {
         <button>SignUp</button>
       </NavLink>
     </div>
-  );
-
+  )}
+  }
   return (
     <header>
       <NavLink to="/">
@@ -34,7 +39,7 @@ export const Header = props => {
       </NavLink>
       <div className="btn-container">
         <p className="welcome">{welcomeBanner}</p>
-        {btns}
+        {btns()}
       </div>
     </header>
   );

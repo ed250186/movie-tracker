@@ -15,13 +15,6 @@ describe('App', () => {
   })
 
   it('should render people home page', () => {
-    global.window = Object.create(window);
-    let url = 'http://localhost:3000/';
-    Object.defineProperty(window, 'location', {
-      value: {
-       href: url
-      }
-    });
     expect(instance.main()).toMatchSnapshot()
   })
 
