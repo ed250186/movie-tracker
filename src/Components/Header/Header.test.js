@@ -1,7 +1,6 @@
 import React from 'react';
-import {shallow, mount} from 'enzyme';
+import {shallow} from 'enzyme';
 import {Header} from './Header';
-import {BrowserRouter as Router} from 'react-router-dom'
 
 // 81, 100, 62, 91
 
@@ -39,12 +38,6 @@ describe('Header', () => {
 
   it('should match snapshot logged in', () => {
     expect(wrapper).toMatchSnapshot()
-  })
-
-  it('should be called with an event', () => {
-    wrapper.instance().signOut = jest.fn()
-    wrapper.find('.signOut').simulate('click')
-    expect(wrapper.instance().signOut).toHaveBeenCalled()
   })
 
   it('should be called with an event', () => {
