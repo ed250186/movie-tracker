@@ -1,12 +1,13 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import {SignUp} from './SignUp';
+import Aside from './Aside';
 
 describe('App', () => {
-  let wrapper
+  let wrapper, instance;
 
   beforeEach(() => {
-    wrapper = shallow(<SignUp />);
+    wrapper = shallow(<Aside/>);
+    instance = wrapper.instance();
   })
 
   it('should match snapshot', () => {

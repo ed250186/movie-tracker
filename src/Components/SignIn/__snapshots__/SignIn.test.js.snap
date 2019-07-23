@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match snapshot 1`] = `
+<div
+  className="sign-in"
+>
+  <NavLink
+    className="exit"
+    to="/"
+  />
+  <form
+    onSubmit={[Function]}
+  >
+    <NavLink
+      to="/"
+    >
+      <img
+        alt="exit sign-in button"
+        className="exit-button"
+        src="cancel.png"
+      />
+    </NavLink>
+    <div>
+      <input
+        name="email"
+        onChange={[Function]}
+        placeholder="Email"
+        value=""
+      />
+      <input
+        name="password"
+        onChange={[Function]}
+        placeholder="Password"
+        type="password"
+        value=""
+      />
+      <input
+        className="button"
+        type="submit"
+        value="Sign In"
+      />
+      <p />
+    </div>
+  </form>
+</div>
+`;

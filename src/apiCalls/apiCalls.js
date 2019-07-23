@@ -18,8 +18,17 @@ export const allUsers = () => {
     .then(data => data.data);
 };
 
-export const createUser = (url, user) => {
-  return fetch(url, user).then(response => response.json());
+export const createUser = (name, email, password) => {
+  const user = {name: name, email: email, password: password}
+  return fetch(`${backendUrl}/new`, {
+    method: "POST",
+    body: JSON.stringify(user),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => response.json())
+    .catch(error => error);
 };
 
 export const fetchUserSignIn = (email, password) => {
@@ -32,7 +41,14 @@ export const fetchUserSignIn = (email, password) => {
     }
   })
     .then(res => res.json())
-    .catch(error => signInUser(error));
+    .catch(error => console.log(error));
+};
+
+export const fetchFavoriteMovies = (userId) => {
+  return fetch(`${backendUrl}/${userId}/favorites/`)
+  .then(res => res.json())
+  .then(movies => movies.data)
+  .catch(error => console.log(error));
 };
 
 export const addNewFavorite = (
@@ -47,7 +63,6 @@ export const addNewFavorite = (
     vote_average: voteAverage,
     overview: overview
   };
-  console.log(favoriteMovie)
   return fetch(`${backendUrl}/favorites/new`, {
     method: "POST",
     body: JSON.stringify(favoriteMovie),
@@ -58,3 +73,14 @@ export const addNewFavorite = (
     .then(res => res.json())
     .catch(error => console.log("Error:", error));
 };
+
+export const deleteFav = async (userId, movieId) => {
+  const response = await fetch(`${backendUrl}/${userId}/favorites/${movieId}`, {
+    method: 'DELETE',
+    headers:{
+      'Content-Type': 'application/json'
+    }
+  }).then(res => res.json())
+  .then(response => console.log('Success:', JSON.stringify(response)))
+  .catch(error => console.error('Error:', error));
+}
