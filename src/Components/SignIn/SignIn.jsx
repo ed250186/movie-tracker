@@ -7,7 +7,7 @@ import { signInUser } from "../../actions/userActions";
 import { fetchUserSignIn } from "../../apiCalls/apiCalls.js";
 import "../SignUp/SignUp.scss";
 
-class SignIn extends Component {
+export class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {

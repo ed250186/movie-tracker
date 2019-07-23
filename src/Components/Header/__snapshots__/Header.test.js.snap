@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should match snapshot logged in 1`] = `
+<header>
+  <NavLink
+    to="/"
+  >
+    <h1>
+      Movie Tracker
+    </h1>
+  </NavLink>
+  <div
+    className="btn-container"
+  >
+    <p
+      className="welcome"
+    >
+      Welcome back, Nathan!
+    </p>
+    <button
+      className="signOut"
+      onClick={[Function]}
+    >
+      SignOut
+    </button>
+  </div>
+</header>
+`;
+
+exports[`Header should match snapshot logged out 1`] = `
+<header>
+  <NavLink
+    to="/"
+  >
+    <h1>
+      Movie Tracker
+    </h1>
+  </NavLink>
+  <div
+    className="btn-container"
+  >
+    <p
+      className="welcome"
+    />
+    <div>
+      <NavLink
+        className="style-header-btns"
+        to="/signin"
+      >
+        <button>
+          SignIn
+        </button>
+      </NavLink>
+      <NavLink
+        className="style-header-btns"
+        to="/signup"
+      >
+        <button>
+          SignUp
+        </button>
+      </NavLink>
+    </div>
+  </div>
+</header>
+`;

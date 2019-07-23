@@ -1,49 +1,23 @@
 import React, { Component } from "react";
 import MovieCard from "../MovieCard/MovieCard.jsx";
 import { connect } from "react-redux";
-import { fetchFavoriteMovies } from "../../apiCalls/apiCalls";
-import { addFavoriteMovie } from "../../actions/favoriteAction";
 
-class Favorites extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      displayFavMovies: false,
-      error: ""
-    };
-  }
-  displayFavoriteMovies = movies => {
-    return movies.map(movie => {
-      return <MovieCard 
-        {...movie} 
+const Favorites = ({favorites}) => {
+console.log('test', favorites)
+  const displayFavoriteMovies = favorites.map(movie => (
+      <MovieCard 
+        path={movie.posterPath} 
         key={movie.id} 
         title={movie.title} 
         />
-    })
-  };
+    ));
 
-  findFaves = () => {
-    const { favorites, movies } = this.props;
-    console.log('fav', favorites)
-    console.log(this.props)
-    const faves = favorites.map(fav => {
-      return movies.find(movie => {
-        return movie.title === fav.title
-      })
-    })
-    return this.displayFavoriteMovies(faves);
-  }
-
-
-  render() {
-    
     return (
     <article>
-      {!this.props.displayFavMovies && this.displayFavoriteMovies(this.props.movies)}
-      {this.props.displayFavMovies && this.findFaves()}
+      <h2>Favorite movies</h2>
+      {displayFavoriteMovies}
     </article>
     );
-  }
 }
 
 const mapStateToProps = state => ({
@@ -52,6 +26,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(
-  mapStateToProps
-)(Favorites);
+export default connect(mapStateToProps)(Favorites);

@@ -51,17 +51,15 @@ export const fetchFavoriteMovies = (userId) => {
   .catch(error => console.log(error));
 };
 
-export const addNewFavorite = (
-  id, userId, title, posterPath, releaseDate, voteAverage, overview
-) => {
+export const addNewFavorite = (userId, movies) => {
   const favoriteMovie = {
-    movie_id: id,
-    user_id: userId,
-    title: title,
-    poster_path: posterPath,
-    release_date: releaseDate,
-    vote_average: voteAverage,
-    overview: overview
+    movie_id: movies.id,
+    user_id: movies.userId,
+    title: movies.title,
+    poster_path: movies.posterPath,
+    release_date: movies.releaseDate,
+    vote_average: movies.voteAverage,
+    overview: movies.overview
   };
   return fetch(`${backendUrl}/favorites/new`, {
     method: "POST",

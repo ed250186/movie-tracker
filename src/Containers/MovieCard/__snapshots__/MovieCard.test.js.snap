@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match snapshot 1`] = `
+<article
+  className="movieCard"
+>
+  <p />
+  <img
+    alt="inactive"
+    className="inactive"
+    onClick={[Function]}
+    src="star-inactive.png"
+  />
+  <img
+    alt="undefined poster"
+    className="card-img"
+    onClick={[Function]}
+  />
+  <p
+    className="title"
+  />
+  <p
+    className="year"
+  />
+</article>
+`;

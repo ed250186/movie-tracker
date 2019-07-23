@@ -4,8 +4,19 @@ import {
   mapDispatchToProps
 } from "./MovieContainer.jsx";
 import { setMovies } from "../../actions";
+import {shallow} from 'enzyme';
 
 describe("MovieContainer", () => {
+
+  let wrapper;
+    beforeEach(() => {
+      wrapper = shallow(<MovieContainer/>)
+    })
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
   describe("mapStateToProps", () => {
     it("should return an object with a movie array", () => {
       const mockState = {
@@ -27,4 +38,6 @@ describe("MovieContainer", () => {
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
   });
+
+
 });

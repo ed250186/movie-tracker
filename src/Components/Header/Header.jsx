@@ -1,22 +1,28 @@
-import React from "react";
+import React, {Component} from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { signOutUser } from "../../actions/userActions";
 import "./Header.scss";
 
-const Header = props => {
-  const welcomeBanner = props.login.loggedIn
-    ? `Welcome back, ${props.login.name}!`
-    : "";
+export class Header extends Component {
+  
+  welcomeBanner = () => ( this.props.login.loggedIn
+    ? `Welcome back, ${this.props.login.name}!`
+    : "")
 
-  const signOut = (event) => {
+  signOut = (event) => {
     event.preventDefault();
-    props.signOutUser(signOutUser)
+    this.props.signOutUser(signOutUser)
   }
 
-  const btns = props.login.loggedIn ? (
-    <button onClick={event => signOut(event)}>SignOut</button>
-  ) : (
+  btns = () => {
+    if(this.props.login.loggedIn) {return (
+    <button onClick={event => this.signOut(event)}
+      className='signOut'
+    >
+      SignOut
+    </button>
+  )} else { return (
     <div>
       <NavLink to="/signin" className="style-header-btns">
         <button>SignIn</button>
@@ -25,19 +31,21 @@ const Header = props => {
         <button>SignUp</button>
       </NavLink>
     </div>
-  );
-
+  )}
+  }
+  render() {
   return (
     <header>
       <NavLink to="/">
         <h1>Movie Tracker</h1>
       </NavLink>
       <div className="btn-container">
-        <p className="welcome">{welcomeBanner}</p>
-        {btns}
+        <p className="welcome">{this.welcomeBanner()}</p>
+        {this.btns()}
       </div>
     </header>
   );
+  }
 };
 
 const mapStateToProps = state => ({

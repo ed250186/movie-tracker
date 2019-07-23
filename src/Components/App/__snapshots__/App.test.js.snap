@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match snapshot 1`] = `
+<div
+  className="App"
+>
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(Favorites)",
+        "type": [Function],
+      }
+    }
+    exact={true}
+    path="/favorites"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(SignIn)",
+        "type": [Function],
+      }
+    }
+    exact={true}
+    path="/signin"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(SignUp)",
+        "type": [Function],
+      }
+    }
+    exact={true}
+    path="/signup"
+  />
+</div>
+`;
+
+exports[`App should render people home page 1`] = `
+<React.Fragment>
+  <Aside />
+  <main>
+    <Memo(ConnectFunction) />
+    <Memo(ConnectFunction) />
+  </main>
+</React.Fragment>
+`;
