@@ -2,8 +2,8 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {SignUp} from './SignUp';
 
-//34.78 |       50 |    22.22 |     38.1
-//... 35,37,41,80,99
+//47.83 |       50 |    44.44 |    52.38
+//... 33,35,37,80,99
 
 
 describe('SignUp', () => {
@@ -44,6 +44,12 @@ describe('SignUp', () => {
     expect(wrapper.state('name')).toEqual('')
     expect(wrapper.state('email')).toEqual('')
     expect(wrapper.state('password')).toEqual('')
+  })
+
+  it('should call handleSignUp on click', () => {
+    wrapper.instance().handleSignUp = jest.fn()
+    wrapper.find('.button').simulate('click')
+    expect(wrapper.instance().handleSignUp).toHaveBeenCalled()
   })
 
 })
