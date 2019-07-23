@@ -68,7 +68,7 @@ export class MovieCard extends Component {
   //   }
   // // }
 
-  toggleFavorite = async (e, id) => {
+  toggleFavorite = async (e) => {
     e.preventDefault();
     
     if (!this.props.login.loggedIn) {
@@ -80,14 +80,13 @@ export class MovieCard extends Component {
 
       const { favorites, movies } = this.props;
         return favorites.find(fav => {
-          if (!fav.id == favorites.movie_id) {
+          if (!fav.movie_id == movies.id) {
             // this.addFavorites();
             // this.setState({ favorited: true });
             console.log('added')
           } else {
             // this.setState({ favorited: false });
-            console.log(movie.id)
-            console.log(favorites.movie_id)
+            console.log(movies)
             console.log('hiiiiiiii')
           }
         });
@@ -135,7 +134,7 @@ export class MovieCard extends Component {
           src={this.state.favorited ? active : inactive}
           alt="inactive"
           className="inactive"
-          onClick={e => this.toggleFavorite(e, id)}
+          onClick={e => this.toggleFavorite(e)}
         />
         <img
           className="card-img"
