@@ -34,4 +34,16 @@ describe('SignUp', () => {
     expect(wrapper.state('email')).toEqual('nathan.froeh@gmail.com')
   })
 
+  it('should reset state', () => {
+    wrapper.setState({
+      name: '1', email: '1', password: '1'})
+    expect(wrapper.state('name')).toEqual('1')
+    expect(wrapper.state('email')).toEqual('1')
+    expect(wrapper.state('password')).toEqual('1')
+    wrapper.instance().resetInputs()
+    expect(wrapper.state('name')).toEqual('')
+    expect(wrapper.state('email')).toEqual('')
+    expect(wrapper.state('password')).toEqual('')
+  })
+
 })
