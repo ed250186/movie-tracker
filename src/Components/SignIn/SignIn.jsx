@@ -45,7 +45,7 @@ export class SignIn extends Component {
       <div className='sign-in'>
         <NavLink to='/' className='exit'>
         </NavLink>
-        <form onSubmit={this.handleLogin}>
+        <form onSubmit={this.handleLogin} className='form'>
           <NavLink to='/'>
             <img src={exit} alt="exit sign-in button" className='exit-button'/>
           </NavLink>

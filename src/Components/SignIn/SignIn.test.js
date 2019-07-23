@@ -2,13 +2,18 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {SignIn} from './SignIn';
 
-//36, 100, 20, 40
+//54, 25, 60, 59
 
-//lines ... 31,35,53,60,83
+//lines ... 25,26,28,30,90
 
-describe('App', () => {
+describe('SignIn', () => {
   let wrapper
-
+  let mockEvent = { 
+    preventDefault: jest.fn(),
+    target: {
+    name: 'email',
+    value: 'nathan.froeh@gmail.com'
+  }}
   beforeEach(() => {
     wrapper = shallow(<SignIn />);
   })
@@ -26,22 +31,26 @@ describe('App', () => {
     expect(wrapper.state('password')).toEqual('')
   })
 
-  it('should be called on click', () => {
+  it('should be called on email change', () => {
     wrapper.instance().handleChange = jest.fn()
     wrapper.find('.email').simulate('change')
     expect(wrapper.instance().handleChange).toHaveBeenCalled()
   })
 
+  it('should be called password change', () => {
+    wrapper.instance().handleChange = jest.fn()
+    wrapper.find('.password').simulate('change')
+    expect(wrapper.instance().handleChange).toHaveBeenCalled()
+  })
+
   it('should set state', () => {
-    let mockEvent = { 
-      preventDefault: jest.fn(),
-      target: {
-      name: 'email',
-      value: 'nathan.froeh@gmail.com'
-    }}
     expect(wrapper.state('email')).toEqual('')
     wrapper.instance().handleChange(mockEvent)
     expect(wrapper.state('email')).toEqual('nathan.froeh@gmail.com')
   })
+
+  
+
+
 
 })
