@@ -39,9 +39,7 @@ exports[`App should match snapshot 1`] = `
         type="submit"
         value="Sign In"
       />
-      <p>
-        Create new account here
-      </p>
+      <p />
     </div>
   </form>
 </div>

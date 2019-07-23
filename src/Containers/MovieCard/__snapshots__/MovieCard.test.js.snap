@@ -4,10 +4,12 @@ exports[`App should match snapshot 1`] = `
 <article
   className="movieCard"
 >
+  <p />
   <img
     alt="inactive"
     className="inactive"
-    src="bookmark-inactive.png"
+    onClick={[Function]}
+    src="star-inactive.png"
   />
   <img
     alt="undefined poster"

@@ -7,22 +7,26 @@ import { signInUser } from "../../actions/userActions";
 import { fetchUserSignIn } from "../../apiCalls/apiCalls.js";
 import "../SignUp/SignUp.scss";
 
-
 export class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      error: ''
     };
   }
 
   handleLogin = async event => {
     event.preventDefault();
     const { email, password } = this.state;
-    let signInUser = await fetchUserSignIn(email, password);
-    this.props.signInUser(signInUser);
-    this.props.history.push("/")
+      let signInUser = await fetchUserSignIn(email, password);
+      if (signInUser){
+        this.props.signInUser(signInUser)
+        this.props.history.push("/")
+      }else {
+        this.setState({error: "Incorrect Username or Password"})
+      }
     this.resetInputs();
   };
 
@@ -64,7 +68,11 @@ export class SignIn extends Component {
             value='Sign In' 
             className='button'
           />
-          <p>Create new account here</p>
+          {this.state.error === ''  ? (
+          <p></p>
+        ) : (
+          <p>{this.state.error}</p>
+        )}
         </div>
         </form>
       </div>

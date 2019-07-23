@@ -8,9 +8,7 @@ exports[`App should match snapshot 1`] = `
     className="exit"
     to="/"
   />
-  <form
-    onSubmit={[Function]}
-  >
+  <form>
     <NavLink
       to="/"
     >
@@ -26,25 +24,30 @@ exports[`App should match snapshot 1`] = `
         onChange={[Function]}
         placeholder="name"
         type="text"
+        value=""
       />
       <input
         name="email"
         onChange={[Function]}
         placeholder="email"
         type="text"
+        value=""
       />
       <input
         name="password"
         onChange={[Function]}
         placeholder="password"
-        type="text"
+        type="password"
+        value=""
       />
       <input
         className="button"
         name="submit"
+        onClick={[Function]}
         type="submit"
         value="Submit"
       />
+      <p />
     </div>
   </form>
 </div>

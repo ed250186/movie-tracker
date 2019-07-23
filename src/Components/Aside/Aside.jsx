@@ -1,29 +1,39 @@
-import React, {Component} from 'react';
-import './Aside.scss';
-
-
+import React, { Component } from "react";
+import "./Aside.scss";
+import { NavLink } from "react-router-dom";
+import Favorites from "../../Containers/Favorites/Favorites";
+import { fetchFavoriteMovies } from "../../apiCalls/apiCalls";
 
 class Aside extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      currentTab: 'home'
-    }
+      error: ""
+    };
   }
 
-  image ={
-    height: '50px'
-}
-
+  handleFavorites = async event => {
+    event.preventDefault();
+    let getFavoriteMovies = await fetchFavoriteMovies();
+    if (getFavoriteMovies) {
+      // this.props.
+      console.log('getFaves')
+    } else {
+      this.setState({ error: "No favorited movies" });
+    }
+  };
 
   render() {
-    return(
+    return (
       <aside>
-        <button>Favorites</button>
+        <NavLink to="/favorites" component={Favorites}>
+          <button>Favorites</button>
+        </NavLink>
       </aside>
-    )
+    );
   }
 }
+
 
 
 export default Aside;

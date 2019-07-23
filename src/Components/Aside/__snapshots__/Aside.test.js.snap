@@ -2,8 +2,21 @@
 
 exports[`App should match snapshot 1`] = `
 <aside>
-  <button>
-    Favorites
-  </button>
+  <NavLink
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(Favorites)",
+        "type": [Function],
+      }
+    }
+    to="/favorites"
+  >
+    <button>
+      Favorites
+    </button>
+  </NavLink>
 </aside>
 `;

@@ -18,4 +18,5 @@ describe('App', () => {
     expect(instance.main()).toMatchSnapshot()
   })
 
+
 })
