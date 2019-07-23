@@ -40,7 +40,6 @@ export class SignIn extends Component {
   };
 
   resetInputs = () => {
-    console.log('input')
     this.setState({ email: "", password: "" });
   };
 

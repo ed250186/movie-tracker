@@ -47,3 +47,53 @@ exports[`SignIn should match snapshot 1`] = `
   </form>
 </div>
 `;
+
+exports[`SignIn should render error 1`] = `
+<div
+  className="sign-in"
+>
+  <NavLink
+    className="exit"
+    to="/"
+  />
+  <form
+    className="form"
+    onSubmit={[Function]}
+  >
+    <NavLink
+      to="/"
+    >
+      <img
+        alt="exit sign-in button"
+        className="exit-button"
+        src="cancel.png"
+      />
+    </NavLink>
+    <div>
+      <input
+        className="email"
+        name="email"
+        onChange={[Function]}
+        placeholder="Email"
+        value=""
+      />
+      <input
+        className="password"
+        name="password"
+        onChange={[Function]}
+        placeholder="Password"
+        type="password"
+        value=""
+      />
+      <input
+        className="button"
+        type="submit"
+        value="Sign In"
+      />
+      <p>
+        Error
+      </p>
+    </div>
+  </form>
+</div>
+`;

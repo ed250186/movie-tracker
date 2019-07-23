@@ -2,7 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {SignIn} from './SignIn';
 
-//82.14 |       50 |    63.64 |    88.46 |
+//82.14 |       75 |    63.64 |    88.46 |
 
 //lines 21,34,98 
 
@@ -16,13 +16,19 @@ describe('SignIn', () => {
   }}
   beforeEach(() => {
     props = {
-      signInUser: jest.fn((prop) => console.log(prop)),
+      signInUser: jest.fn(),
       history: []
     }
     wrapper = shallow(<SignIn {...props}/>);
   })
 
   it('should match snapshot', () => {
+    wrapper.setState({error: ''})
+    expect(wrapper).toMatchSnapshot()
+  })
+
+  it('should render error', () => {
+    wrapper.setState({error: 'Error'})
     expect(wrapper).toMatchSnapshot()
   })
 
