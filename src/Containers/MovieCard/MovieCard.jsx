@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./MovieCard.scss";
 import PropTypes from "prop-types";
-import active from "../../images/bookmark-active.png";
-import inactive from "../../images/bookmark-inactive.png";
+import active from "../../images/star-active.png";
+import inactive from "../../images/star-inactive.png";
 import { connect } from "react-redux";
 import { addNewFavorite, fetchFavoriteMovies } from "../../apiCalls/apiCalls";
 import { addFavoriteMovie } from "../../actions/favoriteAction";

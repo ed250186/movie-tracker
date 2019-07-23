@@ -24,6 +24,8 @@ class Favorites extends Component {
 
   findFaves = () => {
     const { favorites, movies } = this.props;
+    console.log('fav', favorites)
+    console.log(this.props)
     const faves = favorites.map(fav => {
       return movies.find(movie => {
         return movie.title === fav.title
@@ -48,9 +50,6 @@ const mapStateToProps = state => ({
   movies: state.movies
 });
 
-const mapDispatchToProps = dispatch => ({
-  // setMovies: movies => dispatch(setMovies(movies))
-});
 
 export default connect(
   mapStateToProps
