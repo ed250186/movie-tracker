@@ -1,6 +1,7 @@
 import React from 'react';
 import {shallow, mount} from 'enzyme';
 import {Header} from './Header';
+import {BrowserRouter as Router} from 'react-router-dom'
 
 // 62, 100, 28,69
 
@@ -35,16 +36,28 @@ describe('Header', () => {
   })
 
   xit('should be called with an event', () => {
-    let wrapper = mount(<Header login={login} signOutUser={signOutUser}/>)
-    
-    wrapper.setProps({
+    let props = {
       login: {
         loggedIn: true,
         name: 'Nathan'
-      }
-    })
-    console.log(wrapper.instance())
-    wrapper.instance().signOut()
+      },
+      signOutUser: jest.fn()
+    }
+    let wrapper = mount(
+      <Router>
+        <Header {...props}/>
+      </Router>
+    )
+    // wrapper.setProps({
+    //   login: {
+    //     loggedIn: true,
+    //     name: 'Nathan'
+    //   }
+    // })
+    wrapper.signout = jest.fn();
+    console.log(wrapper.props())
+    expect(wrapper.signOut(event))
+      .toHaveBeenCalledWith(event)
   })
 
 })
