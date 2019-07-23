@@ -16,7 +16,6 @@ export class Header extends Component {
   }
 
   btns = () => {
-    console.log('button')
     if(this.props.login.loggedIn) {return (
     <button onClick={event => this.signOut(event)}
       className='signOut'
@@ -35,7 +34,6 @@ export class Header extends Component {
   )}
   }
   render() {
-    console.log(this.props)
   return (
     <header>
       <NavLink to="/">

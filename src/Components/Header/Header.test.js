@@ -3,61 +3,59 @@ import {shallow, mount} from 'enzyme';
 import {Header} from './Header';
 import {BrowserRouter as Router} from 'react-router-dom'
 
-// 62, 100, 28,69
+// 81, 100, 62, 91
 
-// line 13,14,19,55
+// line 58
 
 describe('Header', () => {
-  let wrapper, login, signOutUser;
+  let wrapper, props
   let event = {
     preventDefault: jest.fn()
   }
 
   beforeEach(() => {
-    login = { loggedIn: false }
-    signOutUser = jest.fn()
-    wrapper = shallow(
-      <Header login={login} signOutUser={signOutUser}/>
-    );
-  })
-
-  it('should match snapshot logged out', () => {
-    expect(wrapper).toMatchSnapshot()
-  })
-
-  it('should match snapshot logged in', () => {
-    let login = {
-      loggedIn: true
-    }
-    let wrapper = shallow(
-      <Header login={login} signOutUser={signOutUser}/>
-    );
-    expect(wrapper).toMatchSnapshot()
-  })
-
-  xit('should be called with an event', () => {
-    let props = {
+    props = {
       login: {
         loggedIn: true,
         name: 'Nathan'
       },
-      signOutUser: jest.fn()
+      signOutUser: jest.fn(),
+
     }
-    let wrapper = mount(
-      <Router>
+    wrapper = shallow(
         <Header {...props}/>
-      </Router>
     )
-    // wrapper.setProps({
-    //   login: {
-    //     loggedIn: true,
-    //     name: 'Nathan'
-    //   }
-    // })
-    wrapper.signout = jest.fn();
-    console.log(wrapper.props())
-    expect(wrapper.signOut(event))
-      .toHaveBeenCalledWith(event)
+  })
+
+  it('should match snapshot logged out', () => {
+    wrapper.setProps({
+      login: {
+        loggedIn: false,
+        name: 'Nathan'
+      }
+    })
+    expect(wrapper).toMatchSnapshot()
+  })
+
+  it('should match snapshot logged in', () => {
+    expect(wrapper).toMatchSnapshot()
+  })
+
+  it('should be called with an event', () => {
+    wrapper.instance().signOut = jest.fn()
+    wrapper.find('.signOut').simulate('click')
+    expect(wrapper.instance().signOut).toHaveBeenCalled()
+  })
+
+  it('should be called with an event', () => {
+    wrapper.instance().signOut = jest.fn()
+    wrapper.find('.signOut').simulate('click')
+    expect(wrapper.instance().signOut).toHaveBeenCalled()
+  })
+
+  it('should call signOutUser', () => {
+    wrapper.instance().signOut(event);
+    expect(props.signOutUser).toHaveBeenCalled()
   })
 
 })
