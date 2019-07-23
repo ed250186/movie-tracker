@@ -55,6 +55,7 @@ export class SignIn extends Component {
             value={this.state.email}
             placeholder='Email'
             onChange={event => this.handleChange(event)}
+            className='email'
           />
           <input 
             type='password'
@@ -62,6 +63,7 @@ export class SignIn extends Component {
             value={this.state.password}
             placeholder='Password'
             onChange={event => this.handleChange(event)}
+            className='password'
           />
           <input 
             type="submit" 

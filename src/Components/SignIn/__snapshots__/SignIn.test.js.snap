@@ -22,12 +22,14 @@ exports[`App should match snapshot 1`] = `
     </NavLink>
     <div>
       <input
+        className="email"
         name="email"
         onChange={[Function]}
         placeholder="Email"
         value=""
       />
       <input
+        className="password"
         name="password"
         onChange={[Function]}
         placeholder="Password"
