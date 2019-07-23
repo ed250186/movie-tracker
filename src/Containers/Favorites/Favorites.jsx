@@ -34,6 +34,7 @@ class Favorites extends Component {
     return this.displayFavoriteMovies(faves);
   }
 
+
   render() {
     
     return (

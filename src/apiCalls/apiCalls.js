@@ -44,16 +44,11 @@ export const fetchUserSignIn = (email, password) => {
     .catch(error => console.log(error));
 };
 
-export const fetchFavoriteMovies = async (url, obj, func, err) => {
-  const response = await fetch (url, {
-    method: func,
-    headers: {
-      'Content-Type': 'applications/json'
-    },
-    body: JSON.stringify(obj)
-  })
-    .then(response => response.json())
-    .catch(error => error)
+export const fetchFavoriteMovies = (userId) => {
+  return fetch(`${backendUrl}/${userId}/favorites/`)
+  .then(res => res.json())
+  .then(movies => movies.data)
+  .catch(error => console.log(error));
 };
 
 export const addNewFavorite = (
@@ -78,3 +73,14 @@ export const addNewFavorite = (
     .then(res => res.json())
     .catch(error => console.log("Error:", error));
 };
+
+export const deleteFav = async (userId, movieId) => {
+  const response = await fetch(`${backendUrl}/${userId}/favorites/${movieId}`, {
+    method: 'DELETE',
+    headers:{
+      'Content-Type': 'application/json'
+    }
+  }).then(res => res.json())
+  .then(response => console.log('Success:', JSON.stringify(response)))
+  .catch(error => console.error('Error:', error));
+}
