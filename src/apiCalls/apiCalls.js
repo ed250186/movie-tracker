@@ -62,7 +62,6 @@ export const addNewFavorite = (
     vote_average: voteAverage,
     overview: overview
   };
-  console.log(favoriteMovie)
   return fetch(`${backendUrl}/favorites/new`, {
     method: "POST",
     body: JSON.stringify(favoriteMovie),

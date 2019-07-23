@@ -3,8 +3,7 @@ import { moviesReducer } from "./moviesReducer";
 import {
   grabUsersReducer,
   addUsersReducer,
-  loginReducer,
-  signOutUserReducer
+  loginReducer
 } from "./usersReducer";
 import { favoriteReducer } from './favoriteReducer';
 
@@ -13,7 +12,7 @@ const rootReducer = combineReducers({
   grabUsers: grabUsersReducer,
   addUsers: addUsersReducer,
   login: loginReducer,
-  favoriteMovies: favoriteReducer
+  favorites: favoriteReducer
 });
 
 export default rootReducer;
