@@ -65,5 +65,14 @@ describe('SignUp', () => {
       .toEqual('Email address already exists in the system. Please log in.')
   })
 
+  it('should call addUsers', async () => {
+    wrapper.instance().getUser = jest.fn(() => ({error: ''}))
+    let mockFunc = jest.fn()
+    wrapper.setProps({addUsers: mockFunc})
+    expect(mockFunc).not.toHaveBeenCalled()
+    await wrapper.instance().handleSignUp(mockEvent)
+    expect(mockFunc).toHaveBeenCalled()
+  })
+
 
 })
