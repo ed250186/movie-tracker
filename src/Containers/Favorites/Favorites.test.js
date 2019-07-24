@@ -18,6 +18,11 @@ describe('Favorites', () => {
     expect(wrapper).toMatchSnapshot()
   })
 
+  it('should match snapshot', () => {
+    wrapper.setProps({displayFavMovies: true})
+    expect(wrapper).toMatchSnapshot()
+  })
+
   it('should return a matching movieCard', () => {
     let movies = [{id:1, title:'Batman'}]
     let expected = ([<MovieCard 
@@ -38,6 +43,5 @@ describe('Favorites', () => {
     wrapper.setProps({favorites: movies, movies: movies})
     expect(instance.findFaves()).toEqual(expected)
   })
-
 
 })
