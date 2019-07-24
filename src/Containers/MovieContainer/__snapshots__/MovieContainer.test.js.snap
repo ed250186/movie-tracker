@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieContainer should match snapshot 1`] = `undefined`;
+exports[`MovieContainer should match snapshot 1`] = `<section />`;
