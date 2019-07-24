@@ -3,10 +3,10 @@ import {shallow} from 'enzyme';
 import {MovieCard} from './MovieCard';
 
 
-//28.57 |    27.27 |     12.5 |       30
+//83.78 |    72.73 |     62.5 |    88.57 
 
-//lines   ... 44,161,162,163
-describe('App', () => {
+//lines   83,162,163,164
+describe('MovieCard', () => {
   let wrapper, instance, mockFunc;
   let props = {
     login: {
@@ -25,7 +25,18 @@ describe('App', () => {
   })
 
   it('should match snapshot', () => {
+    wrapper.setState({error: ''})
     expect(wrapper).toMatchSnapshot()
+  })
+
+  xit('should render error', () => {
+    wrapper.setState({error: 'An Error'})
+    expect(wrapper).toMatchSnapshot()
+  })
+
+  xit('should render infoCard', () => {
+    // wrapper.setState({movieInfo: true})
+    expect(instance.infoCard()).toMatchSnapshot()
   })
 
   it('addFavorites should call addFavoriteMovie', () => {
@@ -48,6 +59,12 @@ describe('App', () => {
     expect(mockFunc).toHaveBeenCalled()
   })
 
+  it('should call toggleFavorite on click', () => {
+    instance.toggleFavorite = mockFunc
+    wrapper.find('.inactive').simulate('click')
+    expect(instance.toggleFavorite).toHaveBeenCalled()
+  })
+
   it('should call deleteFavoriteMovie', async () => {
     wrapper.setProps({deleteFavoriteMovie: mockFunc})
     expect(mockFunc).not.toHaveBeenCalled()
@@ -59,6 +76,19 @@ describe('App', () => {
     expect(wrapper.state('movieInfo')).toEqual(false)
     instance.toggleView(true)
     expect(wrapper.state('movieInfo')).toEqual(true)
+  })
+
+  it('should call toggleView on click', () => {
+    instance.toggleView = mockFunc
+    wrapper.find('.card-img').simulate('click')
+    expect(instance.toggleView).toHaveBeenCalled()
+  })
+
+  it('backdrop click should call toggleView', () => {
+    wrapper.setState({movieInfo: true})
+    instance.toggleView = mockFunc
+    wrapper.find('.backdrop').simulate('click')
+    expect(instance.toggleView).toHaveBeenCalled()
   })
 
 })

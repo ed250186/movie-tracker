@@ -83,16 +83,16 @@ export class MovieCard extends Component {
           if (!fav.id == favorites.movie_id) {
             // this.addFavorites();
             // this.setState({ favorited: true });
-            console.log('added')
+            // console.log('added')
           } else {
             // this.setState({ favorited: false });
             // console.log(movie.id)
-            console.log(favorites.movie_id)
-            console.log('hiiiiiiii')
+            // console.log(favorites.movie_id)
+            // console.log('hiiiiiiii')
           }
         });
       };
-      console.log(this.props.favorites);
+      // console.log(this.props.favorites);
       // if(this.props.favorites){}
   };
     //   this.deleteFavoriteMovie(this.props.login.id, this.props.id);
@@ -100,7 +100,7 @@ export class MovieCard extends Component {
   deleteFavoriteMovie = async (userId, movieId) => {
     const movieData = { user_id: userId, movie_id: movieId };
     await this.props.deleteFavoriteMovie(movieData);
-    console.log("hiiiiiiiiiii");
+    // console.log("hiiiiiiiiiii");
     // await this.props.deleteFavoriteMovie(movieData)
   };
 
@@ -116,6 +116,7 @@ export class MovieCard extends Component {
           src={backDropPath}
           alt={title + "background image"}
           onClick={() => this.toggleView(false)}
+          className='backdrop'
         />
         <p className="title">
           {title} | {voteAverage}/10
