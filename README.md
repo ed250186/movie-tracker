@@ -2,7 +2,17 @@
 
 ## Description
 
-Movie Tracker was a group project created using React, Redux and Router to display components from a movie API. On the loading page of the app, it displays a list of currently playing films and allows the user to either sign in or create a new account. Once logged in, the user then has the ability to add and remove favorites and then view their favorites.
+Movie Tracker was a three group project created using React, Redux and Router to display components from a movie API completed in nine days. On the loading page of the app, it displays a list of currently playing films and allows the user to either sign in or create a new account. Once logged in, the user then has the ability to add and remove favorites and then view their favorites.
+
+## Technologies Used
+- HTML
+- SCSS 
+- JavaScript
+- React
+- Redux
+- Router
+- Jest & Enzyme
+- API fetches
 
 ## Installation - Front-End
 
@@ -47,16 +57,6 @@ Run ```npm start``` - visit localhost:3001/api/users - you should see a json res
 - Utilize Redux and Router to provide a seamless user experience
 - Collaborate and create (and iterate) user stories
 - Demonstrate good GitHub collaboration and workflow within a large group
-
-## Technologies Used
-- HTML
-- SCSS 
-- JavaScript
-- React
-- Redux
-- Router
-- Jest & Enzyme
-- API fetches
 
 ## Contributors
 [Emily Dittmer](https://github.com/emilydittmer)
