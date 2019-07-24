@@ -41,7 +41,7 @@ Run ```npm install``` from the root directory
 
 Run ```npm start``` - visit localhost:3000/api/users - you should see a json response with a single user.
 ## Video
-![Favoriting movies](https://github.com/emilydittmer/movie-tracker/blob/master/src/images/zoom_0.mp4)
+[Favoriting movies](https://imgur.com/8qo5lhv)
 
 ## Screenshots
 ### Home Page
