@@ -32,7 +32,11 @@ Run ```npm install``` from the root directory
 Run ```npm start``` - visit localhost:3001/api/users - you should see a json response with a single user.
 
 ## Screenshots
-
+### Home Page
+![Imgur](https://i.imgur.com/EQWQMmy.png)
+![Imgur](https://i.imgur.com/QpATXCS.png)
+### Sign In Screen
+![Imgur](https://i.imgur.com/Ap5KykX.png)
 ### Wireframing
 ![Imgur](https://i.imgur.com/U6HQxSu.jpg)
 
