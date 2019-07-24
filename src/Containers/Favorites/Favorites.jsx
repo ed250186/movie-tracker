@@ -24,8 +24,8 @@ export class Favorites extends Component {
 
   findFaves = () => {
     const { favorites, movies } = this.props;
-    console.log('fav', favorites)
-    console.log(this.props)
+    // console.log('fav', favorites)
+    // console.log(this.props)
     const faves = favorites.map(fav => {
       return movies.find(movie => {
         return movie.title === fav.title

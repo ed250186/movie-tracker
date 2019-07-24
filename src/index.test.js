@@ -1,13 +1,13 @@
-import React from 'react';
-import {shallow} from 'enzyme';
-import {root} from './index';
+// import React from 'react';
+// import {shallow} from 'enzyme';
+// import {root} from './index';
 
 
-describe('src index', () => {
+// describe('src index', () => {
 
-  xit('should match snapshot', () => {
-    let wrapper = shallow(<root/>)
-    expect(wrapper).toMatchSnapshot()
-  })
+//   xit('should match snapshot', () => {
+//     let wrapper = shallow(<root/>)
+//     expect(wrapper).toMatchSnapshot()
+//   })
 
-})
+// })
