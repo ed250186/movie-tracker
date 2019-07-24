@@ -55,4 +55,10 @@ describe('App', () => {
     expect(mockFunc).toHaveBeenCalled()
   })
 
+  it('should set movieView state', () => {
+    expect(wrapper.state('movieInfo')).toEqual(false)
+    instance.toggleView(true)
+    expect(wrapper.state('movieInfo')).toEqual(true)
+  })
+
 })
