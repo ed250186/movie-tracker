@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./MovieContainer.scss";
 import MovieCard from "../MovieCard/MovieCard.jsx";
-import { setMovies } from "../../actions";
+import { setMovies } from "../../actions/index";
 import { connect } from "react-redux";
 import { nowPlaying } from "../../apiCalls/apiCalls";
 import PropTypes from "prop-types";
@@ -38,7 +38,7 @@ export const mapDispatchToProps = dispatch => ({
 });
 
 MovieContainer.propTypes = {
-  movies: PropTypes.object
+  movies: PropTypes.array
 };
 
 export default connect(

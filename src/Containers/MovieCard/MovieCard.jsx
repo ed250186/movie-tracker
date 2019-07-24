@@ -13,7 +13,7 @@ import {
   addFavoriteMovie,
   deleteFavoriteMovie,
   getFavoriteMovies
-} from "../../actions/favoriteAction";
+} from "../../actions/index";
 
 export class MovieCard extends Component {
   constructor(props) {
@@ -135,7 +135,11 @@ const mapDispatchToProps = dispatch => ({
 MovieCard.propTypes = {
   posterPath: PropTypes.string,
   title: PropTypes.string,
-  releaseDate: PropTypes.string
+  releaseDate: PropTypes.string,
+  movies: PropTypes.array,
+  login: PropTypes.object,
+  favorites: PropTypes.array,
+  userId: PropTypes.string
 };
 
 export default connect(

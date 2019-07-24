@@ -9,4 +9,4 @@ export const favoriteReducer = (state = [], action) => {
     default:
       return state;
   }
-};
+}; 

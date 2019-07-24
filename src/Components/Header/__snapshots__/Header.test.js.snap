@@ -3,6 +3,11 @@
 exports[`Header should match snapshot logged in 1`] = `
 <header>
   <NavLink
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
     to="/"
   >
     <h1>
@@ -30,6 +35,11 @@ exports[`Header should match snapshot logged in 1`] = `
 exports[`Header should match snapshot logged out 1`] = `
 <header>
   <NavLink
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
     to="/"
   >
     <h1>
