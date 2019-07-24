@@ -9,42 +9,11 @@
     width: 150px;
     box-shadow: 2px 2px 10px black;
   }
-  .inactive{
-    position: absolute;
-    z-index: 1;
-    height: auto;
-    width: 30px;
-    margin-top: 5px;
-    left: 105px;
-  }
   .title{
     color: #F4F8FA;
     margin: 5px 0 5px 0;
   }
   .year{
     color: #49597B;
-  }
-}
-
-.infoCard {
-  width: 400%;
-  position: absolute;
-  z-index: 5;
-  background: #314467;
-  top: -5%;
-  left: -5%;
-  box-shadow: 2px 2px 10px black;
-  padding: 10%;
-  img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 5%;
-  }
-  .title {
-    font-size: 1.3rem;
-  }
-  .overview{
-    color: white;
-    font-size: .9rem;
   }
 }

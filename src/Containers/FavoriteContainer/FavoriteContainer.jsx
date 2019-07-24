@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import "./FavoriteContainer.scss";
 import Favorites from "../Favorites/Favorites";
 import { connect }  from 'react-redux';
-import { imageUrl } from '../../apiCalls/paths'
 import { getFavoriteMovies } from "../../actions/favoriteAction";
 import { fetchFavoriteMovies } from "../../apiCalls/apiCalls";
+import { NavLink } from 'react-router-dom'
 
 class FavoriteContainer extends Component {
   constructor(props){
@@ -26,7 +26,7 @@ class FavoriteContainer extends Component {
     console.log(favorites)
     const displayFavoriteMovies = favorites.map(movie => (
       <Favorites
-        path={`${imageUrl}${movie.poster_path}`}
+        path={`${movie.poster_path}`}
         key={movie.id} 
         title={movie.title} 
         releaseDate={movie.release_date}
@@ -34,8 +34,15 @@ class FavoriteContainer extends Component {
     ));
     return (
       <section>
-        <h1>Your Favorite Movies</h1>
-        {displayFavoriteMovies}
+        <header>
+          <NavLink to="/">
+            <button>Home</button>
+          </NavLink>
+          <h1 className='header-favs'>Your Favorite Movies</h1>
+        </header>
+        <div className="movie-container">
+          {displayFavoriteMovies}
+        </div>
       </section>
     )
   }

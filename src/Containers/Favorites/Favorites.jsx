@@ -3,7 +3,7 @@ import React, { Component } from "react";
 
 const Favorites = ({title, path, releaseDate}) => {
   return (
-    <article>
+    <article className="movieCard">
       <img
           className="card-img"
           src={path}
