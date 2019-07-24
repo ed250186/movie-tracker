@@ -1,7 +1,6 @@
 import { cleanMovies } from "./Cleaner.js";
 import { baseUrl, backendUrl } from "./paths";
 import { key } from "./apiKey";
-import { signInError, signInUser } from '../actions/userActions'
 
 export const nowPlaying = () => {
   return fetch(

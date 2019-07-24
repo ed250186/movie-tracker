@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Aside.scss";
 import { NavLink } from "react-router-dom";
-import Favorites from "../../Containers/Favorites/Favorites";
+import FavoriteContainer from "../../Containers/FavoriteContainer/FavoriteContainer";
 import { fetchFavoriteMovies } from "../../apiCalls/apiCalls";
 
 class Aside extends Component {
@@ -26,7 +26,7 @@ class Aside extends Component {
   render() {
     return (
       <aside>
-        <NavLink to="/favorites" component={Favorites}>
+        <NavLink to="/favorites" component={FavoriteContainer}>
           <button>Favorites</button>
         </NavLink>
       </aside>

@@ -94,7 +94,7 @@ export class MovieCard extends Component {
   };
 
   render() {
-    const {id, title, posterPath, releaseDate, favorites } = this.props;
+    const {id, title, posterPath, releaseDate } = this.props;
 
     return (
       <article className="movieCard">

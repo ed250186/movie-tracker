@@ -1,30 +1,19 @@
 import React, { Component } from "react";
-import MovieCard from "../MovieCard/MovieCard.jsx";
-import { connect } from "react-redux";
-import { imageUrl } from '../../apiCalls/paths'
 
-const Favorites = ({favorites}) => {
-console.log('test', favorites)
-  const displayFavoriteMovies = favorites.map(movie => (
-      <MovieCard 
-        path={`${imageUrl}${movie.poster_path}`}
-        key={movie.id} 
-        title={movie.title} 
-        />
-    ));
 
-    return (
+const Favorites = ({title, path, releaseDate}) => {
+  return (
     <article>
-      <h2>Favorite movies</h2>
-      {displayFavoriteMovies}
+      <img
+          className="card-img"
+          src={path}
+          alt={`${title} poster`}
+      />
+      <p className="title">{title}</p>
+      <p className="year">{releaseDate}</p>
     </article>
     );
 }
 
-const mapStateToProps = state => ({
-  favorites: state.favorites,
-  movies: state.movies
-});
 
-
-export default connect(mapStateToProps)(Favorites);
+export default Favorites;
