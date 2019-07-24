@@ -25,37 +25,43 @@ export class MovieCard extends Component {
     };
   }
 
-  handleFavorite = e => {
+  handleFavorite = (e, id) => {
     e.preventDefault();
-    const { login, movies } = this.props;
-    console.log(movies);
+
+    const { login } = this.props;
     if (login.id) {
-      this.toggleFavorite(login.id, movies.movie_id);
+      this.toggleFavorite(login.id, id);
     } else {
       this.setState({ error: "Please login to be able to favorite a movie" });
     }
   };
 
-  addFavorites = (userId) => {
-    const{ movies } = this.props
-    addNewFavorite(userId, movies).then(() =>
-      fetchFavoriteMovies(userId).then(favorites =>
-        this.props.getFavoriteMovies(favorites)
+  toggleFavorite = async (userId, movieId) => {
+    
+    await fetchFavoriteMovies(userId).then(favorites =>
+      this.props.getFavoriteMovies(favorites)
       )
-    );
-  };
-
-  toggleFavorite = (userId, movieId) => {
     const { favorites } = this.props;
-    const id = favorites.map(movie => movie.movie_id);
-    console.log(id);
-    if (!id.includes(movieId)) {
-      console.log(this.addFavorites(userId));
+    
+    const id = favorites.find(movie => movie.movie_id === movieId)
+
+    const neededMovieId = this.props.movies.find(movie => movie.id === movieId)
+
+    if (!id) {
+      this.addFavorites(userId, neededMovieId)
       this.setState({ favorited: true });
     } else {
       this.deleteFavoriteMovie(userId, movieId);
       this.setState({ favorited: false });
     }
+  };
+
+  addFavorites = (userId, id) => {
+    addNewFavorite(userId, id).then(() =>
+      fetchFavoriteMovies(userId).then(favorites =>
+        this.props.getFavoriteMovies(favorites)
+      )
+    );
   };
 
   deleteFavoriteMovie = (userId, movieId) => {
@@ -88,7 +94,8 @@ export class MovieCard extends Component {
   };
 
   render() {
-    const { title, posterPath, releaseDate, favorites } = this.props;
+    const {id, title, posterPath, releaseDate, favorites } = this.props;
+
     return (
       <article className="movieCard">
         {this.state.error === "" ? <p /> : <p>{this.state.error}</p>}
@@ -97,7 +104,7 @@ export class MovieCard extends Component {
           src={this.state.favorited ? active : inactive}
           alt="inactive"
           className="inactive"
-          onClick={e => this.handleFavorite(e)}
+          onClick={e => this.handleFavorite(e, id)}
         />
         <img
           className="card-img"

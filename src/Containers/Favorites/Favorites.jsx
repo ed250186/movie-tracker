@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import MovieCard from "../MovieCard/MovieCard.jsx";
 import { connect } from "react-redux";
+import { imageUrl } from '../../apiCalls/paths'
 
 const Favorites = ({favorites}) => {
 console.log('test', favorites)
   const displayFavoriteMovies = favorites.map(movie => (
       <MovieCard 
-        path={movie.posterPath} 
+        path={`${imageUrl}${movie.poster_path}`}
         key={movie.id} 
         title={movie.title} 
         />

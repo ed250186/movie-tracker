@@ -51,15 +51,15 @@ export const fetchFavoriteMovies = (userId) => {
   .catch(error => console.log(error));
 };
 
-export const addNewFavorite = (userId, movies) => {
+export const addNewFavorite = (userId, movie) => {
   const favoriteMovie = {
-    movie_id: movies.id,
-    user_id: movies.userId,
-    title: movies.title,
-    poster_path: movies.posterPath,
-    release_date: movies.releaseDate,
-    vote_average: movies.voteAverage,
-    overview: movies.overview
+    movie_id: movie.id,
+    user_id: userId,
+    title: movie.title,
+    poster_path: movie.posterPath,
+    release_date: movie.releaseDate,
+    vote_average: movie.voteAverage,
+    overview: movie.overview
   };
   return fetch(`${backendUrl}/favorites/new`, {
     method: "POST",
@@ -73,7 +73,7 @@ export const addNewFavorite = (userId, movies) => {
 };
 
 export const deleteFav = async (userId, movieId) => {
-  const response = await fetch(`${backendUrl}/${userId}/favorites/${movieId}`, {
+  await fetch(`${backendUrl}/${userId}/favorites/${movieId}`, {
     method: 'DELETE',
     headers:{
       'Content-Type': 'application/json'
