@@ -1,0 +1,19 @@
+
+.movieCard {
+  height: 250px;
+  width: 150px;
+  margin: 30px;
+  position: relative;
+  .card-img{
+    height: auto;
+    width: 150px;
+    box-shadow: 2px 2px 10px black;
+  }
+  .title{
+    color: #F4F8FA;
+    margin: 5px 0 5px 0;
+  }
+  .year{
+    color: #49597B;
+  }
+}

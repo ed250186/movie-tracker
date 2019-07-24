@@ -38,7 +38,7 @@ export const mapDispatchToProps = dispatch => ({
 });
 
 MovieContainer.propTypes = {
-  movies: PropTypes.array
+  movies: PropTypes.object
 };
 
 export default connect(

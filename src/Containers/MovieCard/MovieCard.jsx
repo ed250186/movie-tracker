@@ -64,20 +64,12 @@ export class MovieCard extends Component {
     );
   };
 
-// <<<<<<< HEAD
-//   deleteFavoriteMovie = async (userId, movieId) => {
-//     const movieData = { user_id: userId, movie_id: movieId };
-//     await this.props.deleteFavoriteMovie(movieData);
-//     // console.log("hiiiiiiiiiii");
-//     // await this.props.deleteFavoriteMovie(movieData)
-// =======
   deleteFavoriteMovie = (userId, movieId) => {
     deleteFav(userId, movieId).then(() =>
       fetchFavoriteMovies(userId).then(favorites =>
         this.props.getFavoriteMovies(favorites)
       )
     );
-// >>>>>>> d4cdbf641ebbfef4878198d444d66af5103f7345
   };
 
   toggleView = view => {
@@ -103,7 +95,7 @@ export class MovieCard extends Component {
   };
 
   render() {
-    const {id, title, posterPath, releaseDate, favorites } = this.props;
+    const {id, title, posterPath, releaseDate } = this.props;
 
     return (
       <article className="movieCard">

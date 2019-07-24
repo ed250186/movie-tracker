@@ -3,8 +3,7 @@ import "./App.scss";
 import Aside from '../Aside/Aside.jsx'
 import Header from '../Header/Header.jsx'
 import MovieContainer from '../../Containers/MovieContainer/MovieContainer.jsx'
-import Favorites from '../../Containers/Favorites/Favorites'
-// import { connect }  from 'react-redux';
+import FavoriteContainer from '../../Containers/FavoriteContainer/FavoriteContainer'
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp'
 import { Route } from "react-router-dom";
@@ -26,7 +25,7 @@ class App extends Component {
     return (
       <div className="App">
         <Route exact path="/" component={() => this.main()} />
-        <Route exact path="/favorites" component={Favorites} />
+        <Route exact path="/favorites" component={FavoriteContainer} />
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/signup" component={SignUp} />
       </div>
