@@ -2,11 +2,6 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {MovieCard} from './MovieCard';
 
-<<<<<<< HEAD
-describe('MovieCard', () => {
-  let wrapper
-=======
->>>>>>> 4b56983c6895aa3e106ccbd372906011710b4d63
 
 //83.78 |    72.73 |     62.5 |    88.57 
 
