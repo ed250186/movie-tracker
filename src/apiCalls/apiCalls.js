@@ -14,7 +14,8 @@ export const nowPlaying = () => {
 export const allUsers = () => {
   return fetch("http://localhost:3000/api/users")
     .then(response => response.json())
-    .then(data => data.data);
+    .then(data => data.data)
+    .catch(error => Error("Error fetching users"))
 };
 
 export const createUser = (name, email, password) => {
@@ -27,7 +28,7 @@ export const createUser = (name, email, password) => {
     }
   })
     .then(response => response.json())
-    .catch(error => error);
+    .catch(error => Error("Error fetching users"))
 };
 
 export const fetchUserSignIn = (email, password) => {
@@ -40,14 +41,14 @@ export const fetchUserSignIn = (email, password) => {
     }
   })
     .then(res => res.json())
-    .catch(error => console.log(error));
+    .catch(error => Error("Error fetching users"));
 };
 
 export const fetchFavoriteMovies = (userId) => {
   return fetch(`${backendUrl}/${userId}/favorites/`)
   .then(res => res.json())
   .then(movies => movies.data)
-  .catch(error => console.log(error));
+  .catch(error => Error("Error fetching favorite movies"));
 };
 
 export const addNewFavorite = (userId, movie) => {
@@ -68,7 +69,7 @@ export const addNewFavorite = (userId, movie) => {
     }
   })
     .then(res => res.json())
-    .catch(error => console.log("Error:", error));
+    .catch(error => Error("Error fetching favorite movies"));
 };
 
 export const deleteFav = async (userId, movieId) => {
@@ -79,5 +80,5 @@ export const deleteFav = async (userId, movieId) => {
     }
   }).then(res => res.json())
   .then(response => console.log('Success:', JSON.stringify(response)))
-  .catch(error => console.error('Error:', error));
+  .catch(error => Error("Error fetching favorite movies"));
 }
