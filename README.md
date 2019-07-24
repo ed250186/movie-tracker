@@ -37,6 +37,8 @@ Run ```npm start``` - visit localhost:3001/api/users - you should see a json res
 ![Imgur](https://i.imgur.com/QpATXCS.png)
 ### Sign In Screen
 ![Imgur](https://i.imgur.com/Ap5KykX.png)
+### Favorites Page
+![Imgur](https://i.imgur.com/N0iXdKU.png)
 ### Wireframing
 ![Imgur](https://i.imgur.com/U6HQxSu.jpg)
 
