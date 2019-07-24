@@ -2,7 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {MovieCard} from './MovieCard';
 
-describe('App', () => {
+describe('MovieCard', () => {
   let wrapper
 
   beforeEach(() => {

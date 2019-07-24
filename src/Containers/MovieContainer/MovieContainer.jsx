@@ -14,7 +14,7 @@ export class MovieContainer extends Component {
     };
   }
 
- componentDidMount() {
+  componentDidMount() {
     nowPlaying()
       .then(data => data)
       .then(movies => this.props.setMovies(movies))
@@ -23,8 +23,8 @@ export class MovieContainer extends Component {
   render() {
     const { movies } = this.props;
     const displayMovies = movies.map(movie => (
-    <MovieCard {...movie} key={movie.id} title={movie.title} />
-    ))
+      <MovieCard {...movie} key={movie.id} title={movie.title} />
+    ));
     return <section>{displayMovies}</section>;
   }
 }

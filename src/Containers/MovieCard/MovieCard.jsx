@@ -37,18 +37,17 @@ export class MovieCard extends Component {
   };
 
   toggleFavorite = async (userId, movieId) => {
-    
     await fetchFavoriteMovies(userId).then(favorites =>
       this.props.getFavoriteMovies(favorites)
-      )
+    );
     const { favorites } = this.props;
-    
-    const id = favorites.find(movie => movie.movie_id === movieId)
 
-    const neededMovieId = this.props.movies.find(movie => movie.id === movieId)
+    const id = favorites.find(movie => movie.movie_id === movieId);
+
+    const neededMovieId = this.props.movies.find(movie => movie.id === movieId);
 
     if (!id) {
-      this.addFavorites(userId, neededMovieId)
+      this.addFavorites(userId, neededMovieId);
       this.setState({ favorited: true });
     } else {
       this.deleteFavoriteMovie(userId, movieId);
@@ -94,7 +93,7 @@ export class MovieCard extends Component {
   };
 
   render() {
-    const {id, title, posterPath, releaseDate, favorites } = this.props;
+    const { id, title, posterPath, releaseDate } = this.props;
 
     return (
       <article className="movieCard">

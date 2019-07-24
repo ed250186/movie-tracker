@@ -15,11 +15,11 @@ export const allUsers = () => {
   return fetch("http://localhost:3000/api/users")
     .then(response => response.json())
     .then(data => data.data)
-    .catch(error => Error("Error fetching users"))
+    .catch(error => Error("Error fetching users"));
 };
 
 export const createUser = (name, email, password) => {
-  const user = {name: name, email: email, password: password}
+  const user = { name: name, email: email, password: password };
   return fetch(`${backendUrl}/new`, {
     method: "POST",
     body: JSON.stringify(user),
@@ -27,8 +27,8 @@ export const createUser = (name, email, password) => {
       "Content-Type": "application/json"
     }
   })
-    .then(response => console.log(response.json()))
-    .catch(error => Error("Error fetching users"))
+    .then(response => response.json())
+    .catch(error => Error("Error fetching users"));
 };
 
 export const fetchUserSignIn = (email, password) => {
@@ -40,15 +40,15 @@ export const fetchUserSignIn = (email, password) => {
       "Content-Type": "application/json"
     }
   })
-    .then(res => console.log(res.json()))
+    .then(res => res.json())
     .catch(error => Error("Error fetching users"));
 };
 
-export const fetchFavoriteMovies = (userId) => {
+export const fetchFavoriteMovies = userId => {
   return fetch(`${backendUrl}/${userId}/favorites/`)
-  .then(res => res.json())
-  .then(movies => movies.data)
-  .catch(error => Error("Error fetching favorite movies"));
+    .then(res => res.json())
+    .then(movies => movies.data)
+    .catch(error => Error("Error fetching favorite movies"));
 };
 
 export const addNewFavorite = (userId, movie) => {
@@ -74,11 +74,12 @@ export const addNewFavorite = (userId, movie) => {
 
 export const deleteFav = async (userId, movieId) => {
   await fetch(`${backendUrl}/${userId}/favorites/${movieId}`, {
-    method: 'DELETE',
-    headers:{
-      'Content-Type': 'application/json'
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
     }
-  }).then(res => res.json())
-  .then(response => console.log('Success:', JSON.stringify(response)))
-  .catch(error => Error("Error fetching favorite movies"));
-}
+  })
+    .then(res => res.json())
+    .then(response => console.log("Success:", JSON.stringify(response)))
+    .catch(error => Error("Error fetching favorite movies"));
+};
