@@ -2,9 +2,9 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {SignIn} from './SignIn';
 
-//82.14 |       75 |    63.64 |    88.46 |
+//84.62 |      100 |    63.64 |    91.67
 
-//lines 21,34,98 
+//lines 21,98 
 
 describe('SignIn', () => {
   let wrapper, props
@@ -47,7 +47,7 @@ describe('SignIn', () => {
     expect(wrapper.instance().handleChange).toHaveBeenCalled()
   })
 
-  it('should be called password change', () => {
+  it('should be called on password change', () => {
     wrapper.instance().handleChange = jest.fn()
     wrapper.find('.password').simulate('change')
     expect(wrapper.instance().handleChange).toHaveBeenCalled()
@@ -59,21 +59,26 @@ describe('SignIn', () => {
     expect(wrapper.state('email')).toEqual('nathan.froeh@gmail.com')
   })
 
-  xit('should call signInUser', () => {
+  it('should call signInUser', async () => {
     wrapper.instance().getUser = jest.fn(() => 'Nathan')
     wrapper.setState({email: '1', password: '2'})
-    wrapper.instance().handleLogin(mockEvent)
-    expect(props.signInUser).toHaveBeenCalled()
+    let mockSignInUser = jest.fn()
+    wrapper.setProps({signInUser: mockSignInUser})
+    await wrapper.instance().handleLogin(mockEvent)
+    expect(mockSignInUser).toHaveBeenCalled()
+  })
+
+  it('should set error state', async () => {
+    wrapper.instance().getUser = jest.fn(() => '')
+    expect(wrapper.state('error')).toEqual("")
+    await wrapper.instance().handleLogin(mockEvent)
+    expect(wrapper.state('error')).toEqual("Incorrect Username or Password")
   })
 
   it('should call resetInputs', () => {
     wrapper.instance().getUser = jest.fn(() => 'Nathan')
     wrapper.setState({email: '1', password: '2'})
-    wrapper.instance().resetInputs = wrapper.setState({
-      email: '',
-      password: ''
-    })
-    wrapper.instance().handleLogin(mockEvent)
+    wrapper.instance().resetInputs()
     expect(wrapper.state('email')).toEqual('')
   })
 

@@ -2,20 +2,25 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {SignUp} from './SignUp';
 
-//47.83 |       50 |    44.44 |    52.38
-//... 33,35,37,80,99
+//52.17 |       50 |    55.56 |    57.14
+//... 32,33,35,37,99
 
 
 describe('SignUp', () => {
-  let wrapper
+  let wrapper, props
   let mockEvent = { 
     preventDefault: jest.fn(),
     target: {
     name: 'email',
-    value: 'nathan.froeh@gmail.com'
+    value: 'nathan.froeh@gmail.com',
+    password: 'Batman'
   }}
   beforeEach(() => {
-    wrapper = shallow(<SignUp />);
+    props = {
+      addUsers: jest.fn(),
+      history: []
+    }
+    wrapper = shallow(<SignUp {...props}/>);
   })
 
   it('should match snapshot', () => {
@@ -34,7 +39,7 @@ describe('SignUp', () => {
     expect(wrapper.state('email')).toEqual('nathan.froeh@gmail.com')
   })
 
-  it('should reset state', () => {
+  it('should reset inputs', () => {
     wrapper.setState({
       name: '1', email: '1', password: '1'})
     expect(wrapper.state('name')).toEqual('1')
@@ -51,5 +56,14 @@ describe('SignUp', () => {
     wrapper.find('.button').simulate('click')
     expect(wrapper.instance().handleSignUp).toHaveBeenCalled()
   })
+
+  it('should set userExistsMessage', async () => {
+    wrapper.instance().getUser = jest.fn(() => ({error: 'stuff'}))
+    expect(wrapper.state('userExistsMessage')).toEqual("")
+    await wrapper.instance().handleSignUp(mockEvent)
+    expect(wrapper.state('userExistsMessage'))
+      .toEqual('Email address already exists in the system. Please log in.')
+  })
+
 
 })
