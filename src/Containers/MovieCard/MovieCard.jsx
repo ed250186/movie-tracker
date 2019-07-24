@@ -27,7 +27,6 @@ export class MovieCard extends Component {
 
   handleFavorite = (e, id) => {
     e.preventDefault();
-
     const { login } = this.props;
     if (login.id) {
       this.toggleFavorite(login.id, id);
@@ -83,6 +82,7 @@ export class MovieCard extends Component {
           src={backDropPath}
           alt={title + "background image"}
           onClick={() => this.toggleView(false)}
+          className='backdrop'
         />
         <p className="title">
           {title} | {voteAverage}/10
@@ -93,7 +93,7 @@ export class MovieCard extends Component {
   };
 
   render() {
-    const { id, title, posterPath, releaseDate } = this.props;
+    const {id, title, posterPath, releaseDate } = this.props;
 
     return (
       <article className="movieCard">

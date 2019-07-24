@@ -5,16 +5,26 @@ import {
 } from "./MovieContainer.jsx";
 import { setMovies } from "../../actions";
 import {shallow} from 'enzyme';
+import React from 'react'
 
+//  85.71 |      100 |       75 |    83.33
+//   19,25
 describe("MovieContainer", () => {
 
-  let wrapper;
+  let wrapper, props;
     beforeEach(() => {
-      wrapper = shallow(<MovieContainer/>)
+      props = {
+        movies: {movies: []}
+      }
+      wrapper = shallow(<MovieContainer {...props}/>)
     })
 
     it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot()
+    })
+
+    xit('should', () => {
+
     })
 
   describe("mapStateToProps", () => {

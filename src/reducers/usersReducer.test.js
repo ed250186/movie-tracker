@@ -38,11 +38,19 @@ describe("usersReducer", () => {
         type: "ADD_USER",
         addUsers: { name: "Tif", id: 2, email: "tif@aol.com" }
       };
+<<<<<<< HEAD
       const expected = [];
 
       const result = addUsersReducer(undefined, action);
 
       expect(result).toEqual(expected);
+=======
+      const expected = []
+
+      const result = addUsersReducer(undefined, action)
+
+      expect(result).toEqual(expected)
+>>>>>>> 4b56983c6895aa3e106ccbd372906011710b4d63
     });
   });
   describe("loginReducer", () => {

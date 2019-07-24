@@ -40,7 +40,7 @@ describe('Header', () => {
     expect(wrapper).toMatchSnapshot()
   })
 
-  it('should be called with an event', () => {
+  it('should be called on click', () => {
     wrapper.instance().signOut = jest.fn()
     wrapper.find('.signOut').simulate('click')
     expect(wrapper.instance().signOut).toHaveBeenCalled()

@@ -25,15 +25,20 @@ export class SignUp extends Component {
     this.setState({[name]: value})
   }
 
+  getUser = (name, email, password) => {
+    return createUser(name, email, password);
+  }
+
   handleSignUp = async event => {
     event.preventDefault();
-
     const { name, email, password } = this.state;
-    let addUsers = await createUser(name, email, password);
+    let addUsers = await this.getUser(name, email, password);
     if (!addUsers.error) {
+      console.log('yes')
       this.props.addUsers(addUsers)
       this.props.history.push("/")
     } else {
+      console.log('no')
       this.setState({userExistsMessage: 'Email address already exists in the system. Please log in.'})
     }
     this.resetInputs();
