@@ -1,0 +1,14 @@
+.movie-container {
+  min-height: 90%;
+  width: 100%;
+  background: #1E2F55;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.header-favs{
+  text-align: center;
+  font-size: 2em;
+  color: white;
+}

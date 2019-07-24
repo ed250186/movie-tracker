@@ -3,9 +3,10 @@ import { connect }  from 'react-redux';
 import "../SignUp/SignUp.scss";
 import { NavLink } from "react-router-dom";
 import exit from '../../images/cancel.png'
-import { signInUser } from "../../actions/userActions";
+import { signInUser } from "../../actions/index";
 import { fetchUserSignIn } from "../../apiCalls/apiCalls.js";
 import "../SignUp/SignUp.scss";
+import PropTypes from "prop-types";
 
 export class SignIn extends Component {
   constructor(props) {
@@ -13,20 +14,24 @@ export class SignIn extends Component {
     this.state = {
       email: "",
       password: "",
-      error: ''
+      error: ""
     };
+  }
+
+  getUser = (email, password) => {
+    return fetchUserSignIn(email, password);
   }
 
   handleLogin = async event => {
     event.preventDefault();
     const { email, password } = this.state;
-      let signInUser = await fetchUserSignIn(email, password);
-      if (signInUser){
-        this.props.signInUser(signInUser)
-        this.props.history.push("/")
-      }else {
-        this.setState({error: "Incorrect Username or Password"})
-      }
+    let signInUser = await this.getUser(email, password);
+    if (signInUser){
+      this.props.signInUser(signInUser)
+      this.props.history.push("/")
+    }else {
+      this.setState({error: "Incorrect Username or Password"})
+    }
     this.resetInputs();
   };
 
@@ -45,7 +50,7 @@ export class SignIn extends Component {
       <div className='sign-in'>
         <NavLink to='/' className='exit'>
         </NavLink>
-        <form onSubmit={this.handleLogin}>
+        <form onSubmit={this.handleLogin} className='form'>
           <NavLink to='/'>
             <img src={exit} alt="exit sign-in button" className='exit-button'/>
           </NavLink>
@@ -55,6 +60,7 @@ export class SignIn extends Component {
             value={this.state.email}
             placeholder='Email'
             onChange={event => this.handleChange(event)}
+            className='email'
           />
           <input 
             type='password'
@@ -62,6 +68,7 @@ export class SignIn extends Component {
             value={this.state.password}
             placeholder='Password'
             onChange={event => this.handleChange(event)}
+            className='password'
           />
           <input 
             type="submit" 
@@ -87,6 +94,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   signInUser: user => dispatch(signInUser(user.data))
 });
+
+SignIn.propTypes = {
+  login: PropTypes.object
+};
 
 export default connect(
   mapStateToProps,

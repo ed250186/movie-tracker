@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { signOutUser } from "../../actions/userActions";
+import { signOutUser } from "../../actions/index";
 import "./Header.scss";
 
 export class Header extends Component {
@@ -36,7 +36,7 @@ export class Header extends Component {
   render() {
   return (
     <header>
-      <NavLink to="/">
+      <NavLink to="/" style={{ textDecoration: 'none' }}>
         <h1>Movie Tracker</h1>
       </NavLink>
       <div className="btn-container">

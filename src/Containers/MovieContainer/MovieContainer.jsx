@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./MovieContainer.scss";
 import MovieCard from "../MovieCard/MovieCard.jsx";
-import { setMovies } from "../../actions";
+import { setMovies } from "../../actions/index";
 import { connect } from "react-redux";
 import { nowPlaying } from "../../apiCalls/apiCalls";
 import PropTypes from "prop-types";
@@ -14,22 +14,23 @@ export class MovieContainer extends Component {
     };
   }
 
-  async componentDidMount() {
-    await nowPlaying()
+ componentDidMount() {
+    nowPlaying()
+      .then(data => data)
       .then(movies => this.props.setMovies(movies))
       .catch(this.setState({ error: "Error fetching data" }));
   }
   render() {
     const { movies } = this.props;
-    const displayMovies = movies.movies.map(movie => (
-      <MovieCard {...movie} key={movie.id} title={movie.title} />
-    ));
+    const displayMovies = movies.map(movie => (
+    <MovieCard {...movie} key={movie.id} title={movie.title} />
+    ))
     return <section>{displayMovies}</section>;
   }
 }
 
 export const mapStateToProps = state => ({
-  movies: setMovies(state.movies)
+  movies: state.movies
 });
 
 export const mapDispatchToProps = dispatch => ({
@@ -38,7 +39,7 @@ export const mapDispatchToProps = dispatch => ({
 
 MovieContainer.propTypes = {
   movies: PropTypes.object
-}
+};
 
 export default connect(
   mapStateToProps,

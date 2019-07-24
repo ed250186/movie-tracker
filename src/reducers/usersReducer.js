@@ -12,7 +12,7 @@ export const addUsersReducer = (state = [], action) => {
     case "ADD_USERS":
       return [...state, action.addUsers];
     case "SIGNUP_ERROR":
-      return state = 'Email already exists in system. Please log in.'
+      return (state = "Email already exists in system. Please log in.");
     default:
       return state;
   }
@@ -25,7 +25,10 @@ export const loginReducer = (state = {}, action) => {
     case "SIGNOUT_USER":
       return (state = {});
     case "SIGNIN_ERROR":
-      return {error: 'Please enter in correct username or password', loggedIn: false}
+      return {
+        error: "Please enter in correct username or password",
+        loggedIn: false
+      };
     default:
       return state;
   }

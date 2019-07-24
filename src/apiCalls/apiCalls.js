@@ -1,7 +1,6 @@
 import { cleanMovies } from "./Cleaner.js";
 import { baseUrl, backendUrl } from "./paths";
 import { key } from "./apiKey";
-import { signInError, signInUser } from '../actions/userActions'
 
 export const nowPlaying = () => {
   return fetch(
@@ -15,11 +14,12 @@ export const nowPlaying = () => {
 export const allUsers = () => {
   return fetch("http://localhost:3000/api/users")
     .then(response => response.json())
-    .then(data => data.data);
+    .then(data => data.data)
+    .catch(error => Error("Error fetching users"))
 };
 
 export const createUser = (name, email, password) => {
-  const user = {name: name, email: email, password: password}
+  const user = { name: name, email: email, password: password };
   return fetch(`${backendUrl}/new`, {
     method: "POST",
     body: JSON.stringify(user),
@@ -28,7 +28,7 @@ export const createUser = (name, email, password) => {
     }
   })
     .then(response => response.json())
-    .catch(error => error);
+    .catch(error => Error("Error fetching users"))
 };
 
 export const fetchUserSignIn = (email, password) => {
@@ -41,27 +41,25 @@ export const fetchUserSignIn = (email, password) => {
     }
   })
     .then(res => res.json())
-    .catch(error => console.log(error));
+    .catch(error => Error("Error fetching users"));
 };
 
-export const fetchFavoriteMovies = (userId) => {
+export const fetchFavoriteMovies = userId => {
   return fetch(`${backendUrl}/${userId}/favorites/`)
   .then(res => res.json())
   .then(movies => movies.data)
-  .catch(error => console.log(error));
+  .catch(error => Error("Error fetching favorite movies"));
 };
 
-export const addNewFavorite = (
-  id, userId, title, posterPath, releaseDate, voteAverage, overview
-) => {
+export const addNewFavorite = (userId, movie) => {
   const favoriteMovie = {
-    movie_id: id,
+    movie_id: movie.id,
     user_id: userId,
-    title: title,
-    poster_path: posterPath,
-    release_date: releaseDate,
-    vote_average: voteAverage,
-    overview: overview
+    title: movie.title,
+    poster_path: movie.posterPath,
+    release_date: movie.releaseDate,
+    vote_average: movie.voteAverage,
+    overview: movie.overview
   };
   return fetch(`${backendUrl}/favorites/new`, {
     method: "POST",
@@ -71,16 +69,17 @@ export const addNewFavorite = (
     }
   })
     .then(res => res.json())
-    .catch(error => console.log("Error:", error));
+    .catch(error => Error("Error fetching favorite movies"));
 };
 
 export const deleteFav = async (userId, movieId) => {
-  const response = await fetch(`${backendUrl}/${userId}/favorites/${movieId}`, {
-    method: 'DELETE',
-    headers:{
-      'Content-Type': 'application/json'
+  await fetch(`${backendUrl}/${userId}/favorites/${movieId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
     }
-  }).then(res => res.json())
-  .then(response => console.log('Success:', JSON.stringify(response)))
-  .catch(error => console.error('Error:', error));
-}
+  })
+    .then(res => res.json())
+    .then(response => console.log("Success:", JSON.stringify(response)))
+    .catch(error => Error("Error fetching favorite movies"));
+};

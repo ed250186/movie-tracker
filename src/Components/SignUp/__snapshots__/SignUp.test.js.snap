@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App should match snapshot 1`] = `
+exports[`SignUp should match snapshot 1`] = `
 <div
   className="sign-up"
 >
@@ -48,6 +48,61 @@ exports[`App should match snapshot 1`] = `
         value="Submit"
       />
       <p />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`SignUp should render message 1`] = `
+<div
+  className="sign-up"
+>
+  <NavLink
+    className="exit"
+    to="/"
+  />
+  <form>
+    <NavLink
+      to="/"
+    >
+      <img
+        alt="exit sign-in button"
+        className="exit-button"
+        src="cancel.png"
+      />
+    </NavLink>
+    <div>
+      <input
+        name="name"
+        onChange={[Function]}
+        placeholder="name"
+        type="text"
+        value=""
+      />
+      <input
+        name="email"
+        onChange={[Function]}
+        placeholder="email"
+        type="text"
+        value=""
+      />
+      <input
+        name="password"
+        onChange={[Function]}
+        placeholder="password"
+        type="password"
+        value=""
+      />
+      <input
+        className="button"
+        name="submit"
+        onClick={[Function]}
+        type="submit"
+        value="Submit"
+      />
+      <p>
+        user
+      </p>
     </div>
   </form>
 </div>
