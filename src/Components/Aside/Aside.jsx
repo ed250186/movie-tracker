@@ -27,7 +27,7 @@ class Aside extends Component {
     return (
       <aside>
         <NavLink to="/favorites" component={Favorites}>
-          <button>Favorites</button>
+          <button>View Favorites</button>
         </NavLink>
       </aside>
     );

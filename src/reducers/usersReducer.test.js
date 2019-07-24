@@ -1,8 +1,7 @@
 import {
   grabUsersReducer,
   addUsersReducer,
-  signInUserReducer,
-  signOutUserReducer
+  loginReducer
 } from "./usersReducer.js";
 
 describe("usersReducer", () => {
@@ -39,25 +38,17 @@ describe("usersReducer", () => {
         type: "ADD_USER",
         addUsers: { name: "Tif", id: 2, email: "tif@aol.com" }
       };
-      const expected = [{ name: "Tif", id: 2, email: "tif@aol.com" }]
+      const expected = []
 
       const result = addUsersReducer(undefined, action)
 
       expect(result).toEqual(expected)
     });
   });
-  describe("signInUserReducer", () => {
+  describe("loginReducer", () => {
     it("should return initial state", () => {
       const expected = {};
-      const result = signInUserReducer(undefined, {});
-
-      expect(result).toEqual(expected);
-    });
-  });
-  describe("signOutUserReducer", () => {
-    it("should return initial state", () => {
-      const expected = {};
-      const result = signOutUserReducer(undefined, {});
+      const result = loginReducer(undefined, {});
 
       expect(result).toEqual(expected);
     });

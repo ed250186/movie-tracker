@@ -4,9 +4,11 @@ import { NavLink } from 'react-router-dom';
 import './SignUp.scss';
 import exit from '../../images/cancel.png'
 import React, {Component} from 'react';
+import PropTypes from "prop-types";
 import './SignUp.scss';
 import { createUser } from '../../apiCalls/apiCalls.js';
-import { addUsers } from '../../actions/userActions';
+import { addUsers } from '../../actions/index';
+
 
 export class SignUp extends Component {
   constructor(props) {
@@ -104,6 +106,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   addUsers: (users) => dispatch(addUsers(users))
 })
+
+SignUp.propTypes = {
+  users: PropTypes.array
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
 

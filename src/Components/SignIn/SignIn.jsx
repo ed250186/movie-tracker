@@ -3,9 +3,10 @@ import { connect }  from 'react-redux';
 import "../SignUp/SignUp.scss";
 import { NavLink } from "react-router-dom";
 import exit from '../../images/cancel.png'
-import { signInUser } from "../../actions/userActions";
+import { signInUser } from "../../actions/index";
 import { fetchUserSignIn } from "../../apiCalls/apiCalls.js";
 import "../SignUp/SignUp.scss";
+import PropTypes from "prop-types";
 
 export class SignIn extends Component {
   constructor(props) {
@@ -93,6 +94,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   signInUser: user => dispatch(signInUser(user.data))
 });
+
+SignIn.propTypes = {
+  login: PropTypes.object
+};
 
 export default connect(
   mapStateToProps,
