@@ -1,4 +1,12 @@
-import { nowPlaying, allUsers, createUser, fetchUserSignIn, fetchFavoriteMovies, addNewFavorite, deleteFav } from "./apiCalls";
+import {
+  nowPlaying,
+  allUsers,
+  createUser,
+  fetchUserSignIn,
+  fetchFavoriteMovies,
+  addNewFavorite,
+  deleteFav
+} from "./apiCalls";
 
 describe("nowPlaying", () => {
   let mockMovies;
@@ -76,19 +84,14 @@ describe("allUsers", () => {
     });
     await expect(allUsers()).resolves.toEqual(Error("Error fetching users"));
   });
-
 });
-
 
 describe("createUser", () => {
   let mockUsers;
   let mockResponse;
   beforeEach(() => {
-    mockUsers = {name: 'name', users: 'users'};
-    mockResponse = [
-      {name: 'name1', users: 'users1'}.
-      mockUsers
-  ]
+    mockUsers = { name: "name", users: "users" };
+    mockResponse = [{ name: "name1", users: "users1" }.mockUsers];
     window.fetch = jest.fn().mockImplementation(() => {
       return Promise.resolve({
         ok: true,
@@ -97,15 +100,18 @@ describe("createUser", () => {
     });
   });
 
-  it("should be called with all params", () => {
-    const expected = ["http://localhost:3000/api/users/new", {
-      method: "POST",
-      body: JSON.stringify(mockUsers),
-      headers: {
-        "Content-Type": "application/json"
+  it("should be called with all params", async () => {
+    const expected = [
+      "http://localhost:3000/api/users/new",
+      {
+        method: "POST",
+        body: JSON.stringify(mockUsers),
+        headers: {
+          "Content-Type": "application/json"
+        }
       }
-    }];
-    createUser(mockUsers);
+    ];
+    await createUser(mockUsers);
     expect(window.fetch).toHaveBeenCalledWith(...expected);
   });
 
@@ -117,13 +123,17 @@ describe("createUser", () => {
     });
     await expect(createUser()).resolves.toEqual(Error("Error fetching users"));
   });
-
 });
 
 describe("fetchUserSignIn", () => {
   let mockUsers;
   beforeEach(() => {
-    mockUsers = {name: 'name', users: 'users'}
+    mockUsers = 
+      { data:
+         { email: 'tman2272@aol.com',
+           id: 1,
+           name: 'Taylor',
+           password: 'password' } } ;
     window.fetch = jest.fn().mockImplementation(() => {
       return Promise.resolve({
         ok: true,
@@ -132,16 +142,18 @@ describe("fetchUserSignIn", () => {
     });
   });
 
-  it("should be called with all params", () => {
-    const expected =
-      ['http://localhost:3000/api/users', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(mockUsers)
-          }];
-    fetchUserSignIn(mockUsers);
+  it("should be called with all params", async () => {
+    const expected = [
+      "http://localhost:3000/api/users",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(mockUsers)
+      }
+    ];
+    await fetchUserSignIn(mockUsers);
     expect(window.fetch).toHaveBeenCalledWith(...expected);
   });
 
@@ -151,9 +163,10 @@ describe("fetchUserSignIn", () => {
         ok: false
       });
     });
-    await expect(fetchUserSignIn()).resolves.toEqual(Error("Error fetching users"));
+    await expect(fetchUserSignIn()).resolves.toEqual(
+      Error("Error fetching users")
+    );
   });
-
 });
 
 describe("fetchFavoriteMovies", () => {
@@ -190,7 +203,8 @@ describe("fetchFavoriteMovies", () => {
         ok: false
       });
     });
-    await expect(fetchFavoriteMovies()).resolves.toEqual(Error("Error fetching favorite movies"));
+    await expect(fetchFavoriteMovies()).resolves.toEqual(
+      Error("Error fetching favorite movies")
+    );
   });
-
 });

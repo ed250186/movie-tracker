@@ -27,7 +27,7 @@ export const createUser = (name, email, password) => {
       "Content-Type": "application/json"
     }
   })
-    .then(response => response.json())
+    .then(response => console.log(response.json()))
     .catch(error => Error("Error fetching users"))
 };
 
@@ -40,7 +40,7 @@ export const fetchUserSignIn = (email, password) => {
       "Content-Type": "application/json"
     }
   })
-    .then(res => res.json())
+    .then(res => console.log(res.json()))
     .catch(error => Error("Error fetching users"));
 };
 
