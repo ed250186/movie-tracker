@@ -33,6 +33,9 @@ Run ```npm start``` - visit localhost:3001/api/users - you should see a json res
 
 ## Screenshots
 
+### Wireframing
+![Imgur](https://i.imgur.com/U6HQxSu.jpg)
+
 ## Learning Goals
 - Interact with a provided back-end through the Fetch API, utilizing common account features
 - Utilize Redux and Router to provide a seamless user experience
