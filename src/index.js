@@ -10,7 +10,8 @@ import rootReducer from './reducers';
 
 const store = createStore(rootReducer, composeWithDevTools());
 
+export const root = (<Root store={store} />)
 
-ReactDOM.render(<Root store={store} />, document.getElementById('root'));
+ReactDOM.render(root, document.getElementById('root'));
 
 serviceWorker.unregister();

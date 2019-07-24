@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { fetchFavoriteMovies } from "../../apiCalls/apiCalls";
 import { addFavoriteMovie } from "../../actions/favoriteAction";
 
-class Favorites extends Component {
+export class Favorites extends Component {
   constructor(props) {
     super(props);
     this.state = {
