@@ -40,4 +40,10 @@ describe('App', () => {
     expect(wrapper.state('error')).toEqual("Please login to be able to favorite a movie")
   })
 
+  it('should call getFavoriteMovies', () => {
+    wrapper.setProps({getFavoriteMovies: mockFunc})
+    instance.toggleFavorite(event, 1)
+    expect(mockFunc).toHaveBeenCalled()
+  })
+
 })
