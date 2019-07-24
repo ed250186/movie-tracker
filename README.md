@@ -40,6 +40,8 @@ Clone down the back-end repo - https://github.com/turingschool-examples/movie-tr
 Run ```npm install``` from the root directory
 
 Run ```npm start``` - visit localhost:3000/api/users - you should see a json response with a single user.
+## Video
+[![Watch the video](https://imgur.com/8qo5lhv)]
 
 ## Screenshots
 ### Home Page
