@@ -41,7 +41,7 @@ Run ```npm install``` from the root directory
 
 Run ```npm start``` - visit localhost:3000/api/users - you should see a json response with a single user.
 ## Video
-![Imgur](https://i.imgur.com/8qo5lhv.mp4)
+[Favoriting movies](https://i.imgur.com/8qo5lhv.mp4)
 
 ## Screenshots
 ### Home Page
