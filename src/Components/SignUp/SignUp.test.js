@@ -2,8 +2,8 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {SignUp} from './SignUp';
 
-//52.17 |       50 |    55.56 |    57.14
-//... 32,33,35,37,99
+//85.19 |      100 |       60 |       92
+//28,105
 
 
 describe('SignUp', () => {
@@ -72,6 +72,14 @@ describe('SignUp', () => {
     expect(mockFunc).not.toHaveBeenCalled()
     await wrapper.instance().handleSignUp(mockEvent)
     expect(mockFunc).toHaveBeenCalled()
+  })
+
+  xit('should push to history', async () => {
+    wrapper.instance().getUser = jest.fn(() => ({error: ''}))
+    wrapper.setProps({history:[]})
+    // expect(wrapper.props()).toEqual([])
+    wrapper.instance().handleSignUp(mockEvent)
+    expect(wrapper.props('history')).toEqual(['/'])
   })
 
 
